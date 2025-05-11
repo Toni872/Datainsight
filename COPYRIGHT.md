@@ -1,10 +1,10 @@
 # Aviso de Derechos de Autor (Copyright Notice)
 
-© 2025 [Tu Nombre]. Todos los derechos reservados.
+© 2025 Antonio Loret Sanchez. Todos los derechos reservados.
 
 ## Declaración de Propiedad
 
-Este proyecto y todo su contenido, incluyendo pero no limitado a código fuente, documentación, diseños, y algoritmos, son propiedad intelectual de [Tu Nombre], salvo cuando se indique explícitamente lo contrario.
+Este proyecto y todo su contenido, incluyendo pero no limitado a código fuente, documentación, diseños, y algoritmos, son propiedad intelectual de Antonio Loret Sanchez, salvo cuando se indique explícitamente lo contrario.
 
 ## Términos de Uso
 
@@ -26,7 +26,7 @@ Este proyecto puede incluir componentes de terceros, cada uno con sus propias li
 
 ## Para Permisos Adicionales
 
-Para obtener permisos que vayan más allá de los otorgados por la licencia AGPL-3.0, contactar a [tu-email@ejemplo.com].
+Para obtener permisos que vayan más allá de los otorgados por la licencia AGPL-3.0, contactar a datainsightmaail@hotmail.com.
 
 ---
 
