@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DataInsight AI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="main-header">
+                <div class="logo">DataInsight</div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                        <li><a href="modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                        <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="section-title">Panel de Control</h1>
+            
+            <!-- Selector de Modelo -->
+            <div class="filter-controls mb-4">
+                <select id="model-selector" class="select-control">
+                    <option value="random_forest" selected>Random Forest</option>
+                    <option value="svm">SVM</option>
+                    <option value="logistic_regression">Regresión Logística</option>
+                    <option value="xgboost">XGBoost</option>
+                    <option value="decision_tree">Decision Tree</option>
+                </select>
+                <button id="theme-toggle" class="btn btn-sm">
+                    <i class="fas fa-moon"></i> Modo Oscuro
+                </button>
+            </div>
+            
+            <!-- Resumen de métricas -->
+            <div class="grid metrics-summary">
+                <div class="metric-card">
+                    <div class="metric-value">97.8%</div>
+                    <div class="metric-label">Precisión del modelo</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i> +2.3%
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">Modelos entrenados</div>
+                    <div class="metric-trend neutral">
+                        <i class="fas fa-minus"></i> Sin cambios
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">150</div>
+                    <div class="metric-label">Total de registros</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i> +50
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">96.5%</div>
+                    <div class="metric-label">Recall</div>
+                    <div class="metric-trend down">
+                        <i class="fas fa-arrow-down"></i> -0.8%
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gráficas principales -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Rendimiento de Modelos</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="modelsPerformanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <!-- Distribución de clases -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Distribución de Clases</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="classDistributionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Importancia de características -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Importancia de Características</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="featureImportanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gráficas adicionales -->
+            <div class="grid mt-4">
+                <!-- Heatmap de correlación -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Correlación de Características</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="correlationHeatmap"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Línea de tiempo de predicciones -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Evolución de Precisión</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="predictionTimeline"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid mt-4">
+                <!-- Actividad reciente -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Actividad Reciente</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="activity-list">
+                            <li>
+                                <div class="activity-time">10:25</div>
+                                <div class="activity-icon model">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <strong>Modelo entrenado</strong>
+                                    <p>Random Forest (Iris Dataset)</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-time">09:15</div>
+                                <div class="activity-icon analysis">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <strong>Análisis completado</strong>
+                                    <p>Análisis exploratorio de datos</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-time">08:30</div>
+                                <div class="activity-icon upload">
+                                    <i class="fas fa-file-upload"></i>
+                                </div>
+                                <div>
+                                    <strong>Datos cargados</strong>
+                                    <p>Iris Dataset (150 registros)</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Alertas -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Alertas y Notificaciones</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert-item warning">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>Valores atípicos detectados</h4>
+                                <p>Se han detectado 3 valores atípicos en la característica 'sepal_width'</p>
+                            </div>
+                        </div>
+                        <div class="alert-item info">
+                            <div class="alert-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>Entrenamiento completado</h4>
+                                <p>El modelo XGBoost ha sido entrenado exitosamente</p>
+                            </div>
+                        </div>
+                        <div class="alert-item success">
+                            <div class="alert-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>API conectada</h4>
+                                <p>Conexión establecida con el servidor de predicción</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Acciones -->
+            <div class="mt-4 text-center">
+                <button class="btn" onclick="window.dashboardFunctions.refreshCharts()">
+                    <i class="fas fa-sync-alt"></i> Actualizar datos
+                </button>
+                <button class="btn btn-secondary" onclick="window.dashboardFunctions.loadRealtimeData()">
+                    <i class="fas fa-clock"></i> Activar datos en tiempo real
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                <div>                    <h3>DataInsight AI</h3>
+                    <p>Plataforma integrada de análisis de datos y machine learning.</p>
+                    <p>&copy; 2025 - Todos los derechos reservados</p>
+                </div>
+                
+                <div>
+                    <h4>Navegación</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/analisis.html">Análisis</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

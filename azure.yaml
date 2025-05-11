@@ -1,0 +1,12 @@
+name: datainsight-ai
+metadata:
+  template: datainsight-ai@0.1.0-beta
+services:
+  web:
+    project: .
+    language: ts
+    host: appservice
+  ml-service:
+    project: ./data_science_ml_learning
+    language: python
+    host: containerapp

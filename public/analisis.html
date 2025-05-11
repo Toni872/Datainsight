@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Datos - DataInsight AI</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Incluir Chart.js para visualizaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container main-header">
+            <div class="logo">DataInsight</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                    <li><a href="/modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                    <li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">Análisis Exploratorio de Datos</h1>
+                <p class="hero-subtitle">Descubre patrones, tendencias y relaciones en tus datos con nuestras herramientas avanzadas de análisis</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Exploración de Datos</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3">Seleccione un dataset para realizar un análisis básico y visualizar estadísticas descriptivas.</p>
+                        
+                        <form id="dataset-form">
+                            <div class="form-group">
+                                <label for="dataset-select">Dataset:</label>
+                                <select id="dataset-select" class="form-control">
+                                    <option value="">-- Seleccione un dataset --</option>
+                                    <option value="iris_sample">Iris Dataset (muestra)</option>
+                                    <option value="demo">Datos Demo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tipo de análisis:</label>
+                                <div>
+                                    <input type="radio" id="analysis-basic" name="analysis-type" value="basic" checked>
+                                    <label for="analysis-basic">Análisis Básico</label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn">
+                                <i class="fas fa-play"></i> Analizar datos
+                            </button>
+                        </form>
+                        
+                        <div id="result-container" class="mt-4">
+                            <p><i class="fas fa-info-circle"></i> Los resultados del análisis se mostrarán aquí...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tools"></i> Técnicas de Análisis</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3">Nuestras herramientas de análisis incluyen:</p>
+                        
+                        <div class="data-feature">
+                            <div class="data-feature-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="data-feature-content">
+                                <h4>Estadísticas descriptivas</h4>
+                                <p>Media, mediana, desviación estándar y más métricas para entender la distribución de tus datos.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="data-feature">
+                            <div class="data-feature-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="data-feature-content">
+                                <h4>Análisis de correlación</h4>
+                                <p>Identifica relaciones y dependencias entre las variables de tu dataset.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="data-feature">
+                            <div class="data-feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="data-feature-content">
+                                <h4>Visualización de datos</h4>
+                                <p>Histogramas, diagramas de dispersión y otras visualizaciones para comunicar insights eficazmente.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="data-feature">
+                            <div class="data-feature-icon">
+                                <i class="fas fa-broom"></i>
+                            </div>
+                            <div class="data-feature-content">
+                                <h4>Preprocesamiento</h4>
+                                <p>Normalización de datos, manejo de valores faltantes y preparación para modelos de machine learning.</p>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-3">Estas técnicas son fundamentales para el análisis avanzado y la implementación de modelos predictivos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3><i class="fas fa-graduation-cap"></i> Aprende más</h3>
+                </div>
+                <div class="card-body">
+                    <p>El análisis exploratorio de datos es el primer paso fundamental en cualquier proyecto de ciencia de datos. Te permite:</p>
+                    
+                    <ul class="mt-2 mb-3">
+                        <li>Identificar patrones y anomalías en tus datos</li>
+                        <li>Generar hipótesis para investigaciones posteriores</li>
+                        <li>Detectar errores o inconsistencias en tus datasets</li>
+                        <li>Preparar los datos para el entrenamiento de modelos</li>
+                    </ul>
+                    
+                    <p>Una vez completado el análisis básico, puedes pasar a la fase de modelado con nuestras herramientas de machine learning.</p>
+                    
+                    <a href="/modelos.html" class="btn btn-secondary mt-2">
+                        <i class="fas fa-arrow-right"></i> Ir a modelos de ML
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                <div>                    <h3>DataInsight AI</h3>
+                    <p>Plataforma integrada de análisis de datos y machine learning.</p>
+                    <p>&copy; 2025 - Todos los derechos reservados</p>
+                </div>
+                
+                <div>
+                    <h4>Navegación</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/analisis.html">Análisis</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /temp/
+Disallow: /dashboard.html?debug=true
+
+Sitemap: https://www.contactodatainsight.com/sitemap.xml

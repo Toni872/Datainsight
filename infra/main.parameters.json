@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "applicationName": {
+      "value": "datainsight"
+    },
+    "location": {
+      "value": "westeurope"
+    },
+    "environmentName": {
+      "value": "${AZURE_ENV_NAME}"
+    },
+    "resourceTags": {
+      "value": {
+        "Environment": "Production",
+        "Project": "DataInsight AI",
+        "Owner": "DataInsight Team"
+      }
+    },
+    "appServicePlanSku": {
+      "value": {
+        "name": "P1v2",
+        "tier": "PremiumV2",
+        "size": "P1v2",
+        "family": "Pv2",
+        "capacity": 1
+      }
+    }
+  }
+}

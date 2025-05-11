@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Datasets - DataInsight AI</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- DataTables para visualización de datos tabulares -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <header>
+        <div class="container main-header">
+            <div class="logo">DataInsight</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/dashboard.html">Dashboard</a></li>
+                    <li><a href="/datasets.html">Datasets</a></li>
+                    <li><a href="/analisis.html">Análisis de Datos</a></li>
+                    <li><a href="/modelos.html">Modelos ML</a></li>
+                    <li><a href="/about.html">Acerca de</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">Gestión de Datasets</h1>
+                <p class="hero-subtitle">Sube, visualiza y administra tus conjuntos de datos para análisis y entrenamiento de modelos</p>
+            </div>
+            
+            <!-- Sección de carga de archivos -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-upload"></i> Cargar Nuevo Dataset</h3>
+                </div>
+                <div class="card-body">
+                    <form id="uploadDatasetForm">
+                        <div class="form-group">
+                            <label for="datasetName">Nombre del Dataset</label>
+                            <input type="text" id="datasetName" class="form-control" required placeholder="Ej: ventas_2025_trimestre1">
+                            <small class="help-text">Nombre descriptivo para identificar el dataset (sin espacios)</small>
+                        </div>
+                        
+                        <div class="grid" style="grid-template-columns: 2fr 1fr;">
+                            <div class="form-group">
+                                <label for="datasetFile">Archivo CSV</label>
+                                <input type="file" id="datasetFile" class="form-control" required accept=".csv">
+                                <small class="help-text">Archivos CSV con valores separados por comas</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="separator">Separador</label>
+                                <select id="separator" class="form-control">
+                                    <option value="," selected>Coma (,)</option>
+                                    <option value=";">Punto y coma (;)</option>
+                                    <option value="\t">Tabulador (Tab)</option>
+                                </select>
+                                <small class="help-text">Delimitador de columnas</small>
+                            </div>
+                        </div>
+                        
+                        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                            <div class="form-group">
+                                <label for="hasHeader">Encabezados</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="hasHeader" checked>
+                                    <label for="hasHeader">Primera fila contiene encabezados</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="datasetCategory">Categoría</label>
+                                <select id="datasetCategory" class="form-control">
+                                    <option value="general">General</option>
+                                    <option value="ventas">Ventas</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="rrhh">RRHH</option>
+                                    <option value="finanzas">Finanzas</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="isPublic">Visibilidad</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="isPublic" checked>
+                                    <label for="isPublic">Dataset público</label>
+                                    <small class="help-text d-block">Visible para todos los usuarios</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="datasetDescription">Descripción</label>
+                            <textarea id="datasetDescription" class="form-control" rows="3" placeholder="Describe brevemente este conjunto de datos..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn"><i class="fas fa-upload"></i> Subir Dataset</button>
+                            <button type="reset" class="btn btn-secondary"><i class="fas fa-undo"></i> Reiniciar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Sección de datasets disponibles -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3><i class="fas fa-database"></i> Datasets Disponibles</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Filtros -->
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label for="filterCategory">Filtrar por Categoría:</label>
+                            <select id="filterCategory" class="form-control-sm">
+                                <option value="all">Todas</option>
+                                <option value="general">General</option>
+                                <option value="ventas">Ventas</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="rrhh">RRHH</option>
+                                <option value="finanzas">Finanzas</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="sortBy">Ordenar por:</label>
+                            <select id="sortBy" class="form-control-sm">
+                                <option value="date-desc">Fecha (más reciente)</option>
+                                <option value="date-asc">Fecha (más antiguo)</option>
+                                <option value="name-asc">Nombre (A-Z)</option>
+                                <option value="name-desc">Nombre (Z-A)</option>
+                                <option value="size-desc">Tamaño (mayor)</option>
+                                <option value="size-asc">Tamaño (menor)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <div class="search-box">
+                                <input type="text" id="searchDataset" class="form-control-sm" placeholder="Buscar datasets...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tabla de datasets -->
+                    <div class="table-responsive">
+                        <table id="datasetsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Filas</th>
+                                    <th>Columnas</th>
+                                    <th>Tamaño</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Dataset de ejemplo: Iris -->
+                                <tr>
+                                    <td>
+                                        <div class="dataset-info">
+                                            <div class="dataset-icon" data-type="csv"><i class="fas fa-table"></i></div>
+                                            <div>
+                                                <strong>iris_sample</strong>
+                                                <div class="dataset-description">Dataset clásico de clasificación de flores iris</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-general">General</span></td>
+                                    <td>150</td>
+                                    <td>5</td>
+                                    <td>4.8 KB</td>
+                                    <td>06/05/2025</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar" onclick="viewDataset('iris_sample')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Descargar" onclick="downloadDataset('iris_sample')">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Eliminar" onclick="deleteDataset('iris_sample')">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Dataset de ejemplo: Demo Dataset -->
+                                <tr>
+                                    <td>
+                                        <div class="dataset-info">
+                                            <div class="dataset-icon" data-type="csv"><i class="fas fa-table"></i></div>
+                                            <div>
+                                                <strong>demo_dataset</strong>
+                                                <div class="dataset-description">Conjunto de datos de demostración</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-ventas">Ventas</span></td>
+                                    <td>1,240</td>
+                                    <td>8</td>
+                                    <td>52.3 KB</td>
+                                    <td>05/05/2025</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar" onclick="viewDataset('demo_dataset')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Descargar" onclick="downloadDataset('demo_dataset')">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Eliminar" onclick="deleteDataset('demo_dataset')">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Dataset de ejemplo: Ventas 2025 -->
+                                <tr>
+                                    <td>
+                                        <div class="dataset-info">
+                                            <div class="dataset-icon" data-type="csv"><i class="fas fa-table"></i></div>
+                                            <div>
+                                                <strong>ventas_2025_q1</strong>
+                                                <div class="dataset-description">Ventas del primer trimestre de 2025</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-ventas">Ventas</span></td>
+                                    <td>3,750</td>
+                                    <td>12</td>
+                                    <td>128.5 KB</td>
+                                    <td>03/05/2025</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar" onclick="viewDataset('ventas_2025_q1')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Descargar" onclick="downloadDataset('ventas_2025_q1')">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                            <button class="btn-icon" title="Eliminar" onclick="deleteDataset('ventas_2025_q1')">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal para visualizar dataset -->
+            <div id="viewDatasetModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="datasetModalTitle">Visualización de Dataset</h4>
+                        <button class="close-modal" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="dataset-stats grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+                            <div class="stat-item">
+                                <div class="stat-label">Total filas</div>
+                                <div class="stat-value" id="statRows">-</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Total columnas</div>
+                                <div class="stat-value" id="statCols">-</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Valores nulos</div>
+                                <div class="stat-value" id="statNulls">-</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">Valores duplicados</div>
+                                <div class="stat-value" id="statDups">-</div>
+                            </div>
+                        </div>
+                        
+                        <div class="tabs mt-3">
+                            <div class="tabs-nav">
+                                <button class="tab-btn active" data-tab="preview">Vista Previa</button>
+                                <button class="tab-btn" data-tab="stats">Estadísticas</button>
+                                <button class="tab-btn" data-tab="viz">Visualización</button>
+                            </div>
+                            
+                            <div class="tab-content" id="tabPreview">
+                                <div class="table-responsive">
+                                    <table id="previewTable" class="table table-striped">
+                                        <!-- El contenido se cargará dinámicamente -->
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content hidden" id="tabStats">
+                                <div class="table-responsive">
+                                    <table id="statsTable" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Columna</th>
+                                                <th>Tipo</th>
+                                                <th>Valores Nulos</th>
+                                                <th>Media</th>
+                                                <th>Mediana</th>
+                                                <th>Mín</th>
+                                                <th>Máx</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- El contenido se cargará dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content hidden" id="tabViz">
+                                <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                                    <div class="chart-container">
+                                        <canvas id="columnDistChart"></canvas>
+                                    </div>
+                                    <div class="chart-container">
+                                        <canvas id="correlationChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" onclick="closeModal()">Cerrar</button>
+                        <button class="btn" onclick="loadDatasetForAnalysis()">Usar para Análisis</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                <div>
+                    <h3>DataInsight AI</h3>
+                    <p>Plataforma integrada de análisis de datos y machine learning.</p>
+                    <p>&copy; 2025 Todos los derechos reservados</p>
+                </div>
+                
+                <div>
+                    <h4>Navegación</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/datasets.html">Datasets</a></li>
+                        <li><a href="/analisis.html">Análisis</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope"></i> datainsightmaail@hotmail.com</p>
+                    <p><i class="fas fa-phone"></i> +34 123 456 789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/datasets.js"></script>
+</body>
+</html>

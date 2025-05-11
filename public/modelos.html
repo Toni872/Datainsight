@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataInsight AI - Modelos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js para visualizaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- Chart.js Matrix plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.1.1/dist/chartjs-chart-matrix.min.js"></script>
+    <!-- Chart.js adapter para fecha-hora -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        /* Estilos adicionales específicos para la página de modelos */
+        .models-container {
+            padding: 20px;
+        }
+        .two-column-layout {
+            display: flex;
+            gap: 30px;
+        }
+        .sidebar {
+            width: 35%;
+            min-width: 300px;
+        }
+        .main-content {
+            flex-grow: 1;
+        }
+        
+        /* Estilos mejorados para la sección hero */
+        .hero-section {
+            background: linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 128, 185, 0.8) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Estilos de tarjetas */
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .card h3 i {
+            background-color: var(--accent-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .card h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            gap: 8px;
+        }
+        
+        /* Selector de datasets */
+        .dataset-selector {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .dataset-selector label {
+            font-weight: bold;
+            min-width: 150px;
+            color: var(--text-color);
+        }
+        
+        .dataset-selector select {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--input-bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dataset-selector select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+            outline: none;
+        }
+        
+        /* Botones */
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-color), #2980b9);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, #2980b9, var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.85rem;
+        }
+        
+        /* Formularios */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--input-bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input[type="text"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-group input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        /* Estilo personalizado para input file */
+        .file-input-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .file-input-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--secondary-bg-color);
+            color: var(--text-color);
+            border: 2px dashed var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .file-input-button:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .file-input-button i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .file-name-display {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        /* Otras clases existentes */
+        .model-options label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .dataset-info .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .info-item {
+            background-color: var(--secondary-bg-color);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .info-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+        .table-container {
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        #data-preview {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #data-preview th, #data-preview td {
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+        #data-preview th {
+            background-color: var(--accent-color);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        #data-preview tr:nth-child(even) {
+            background-color: var(--secondary-bg-color);
+        }
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .metrics-table th, .metrics-table td {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .metrics-table th {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .best-model {
+            background-color: rgba(46, 204, 113, 0.2);
+            font-weight: bold;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+        .tab-content {
+            display: none;
+            padding: 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .canvas-container {
+            height: 400px;
+            position: relative;
+        }
+        .feature-input {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .feature-input label {
+            width: 120px;
+            margin-right: 10px;
+        }
+        .feature-input input {
+            flex-grow: 1;
+            max-width: 100px;
+        }
+        .prediction-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--secondary-bg-color);
+            border-radius: 8px;
+        }
+        .prediction-class {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .prob-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .prob-label {
+            width: 100px;
+            font-weight: bold;
+        }
+        .prob-bar {
+            flex-grow: 1;
+            height: 25px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            position: relative;
+        }
+        .prob-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+        .prob-value {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @media (max-width: 900px) {
+            .two-column-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
+        
+        /* Nuevo estilo para el selector con botón */
+        .select-with-button {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .select-with-button select {
+            flex-grow: 1;
+        }
+        
+        /* Botón grande y centrado */
+        .btn-lg {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+        
+        .form-submit-centered {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        /* Estilos para iconos en los labels */
+        .form-group label i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        /* Mejora visual para campos enfocados */
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        /* Animación de hover para cards */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilo personalizado para el selector estilizado */
+        .styled-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 12px auto;
+            padding-right: 30px;
+        }
+        
+        /* Mejoras en las tarjetas */
+        .card h3 {
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .card h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-color), transparent);
+        }
+
+        /* Estilo para el divisor */
+        .styled-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(52, 152, 219, 0), rgba(52, 152, 219, 0.75), rgba(52, 152, 219, 0));
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container main-header">
+            <div class="logo">
+                DataInsight
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                    <li><a href="modelos.html" class="active"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="container">
+            <!-- Sección Hero Mejorada para Modelos -->
+            <section class="hero-section">
+                <h2><i class="fas fa-brain"></i> Modelos de Aprendizaje Automático</h2>
+                <p>Entrene, evalúe y gestione sus modelos de Machine Learning en un solo lugar.</p>
+            </section>
+            
+            <!-- Contenedor principal dividido en dos columnas -->
+            <div class="two-column-layout">
+                <!-- Sidebar para gestión de datasets -->
+                <div class="sidebar">
+                    <!-- Card para seleccionar dataset -->
+                    <div class="card">
+                        <h3><i class="fas fa-database"></i> Datasets</h3>
+                        
+                        <!-- Selector de dataset existente mejorado -->
+                        <div class="form-group">
+                            <label for="dataset-select"><i class="fas fa-list-ul"></i> Seleccionar Dataset:</label>
+                            <div class="select-with-button">
+                                <select id="dataset-select" class="styled-select">
+                                    <option value="iris">Iris Dataset</option>
+                                    <option value="boston">Boston Housing</option>
+                                    <option value="diabetes">Diabetes</option>
+                                    <option value="wine">Wine Quality</option>
+                                </select>
+                                <button id="update-dataset" class="btn-primary btn-sm">
+                                    <i class="fas fa-sync-alt"></i> Actualizar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <hr class="styled-divider">
+                        
+                        <!-- Formulario para cargar nuevo dataset mejorado -->
+                        <h4><i class="fas fa-cloud-upload-alt"></i> Cargar nuevo Dataset</h4>
+                        <form id="upload-dataset-form">
+                            <div class="form-group">
+                                <label for="dataset-name"><i class="fas fa-tag"></i> Nombre del Dataset:</label>
+                                <input type="text" id="dataset-name" placeholder="Ej: Mis Datos" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dataset-file"><i class="fas fa-file-csv"></i> Archivo CSV:</label>
+                                <div class="file-input-container">
+                                    <div class="file-input-button" id="file-input-button">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Arrastra un archivo o haz clic para seleccionar</span>
+                                    </div>
+                                    <div class="file-name-display" id="file-name-display">Ningún archivo seleccionado</div>
+                                    <input type="file" id="dataset-file" accept=".csv" hidden required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dataset-desc"><i class="fas fa-align-left"></i> Descripción:</label>
+                                <textarea id="dataset-desc" placeholder="Breve descripción de los datos..." rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="target-column"><i class="fas fa-bullseye"></i> Columna objetivo:</label>
+                                <input type="text" id="target-column" placeholder="Nombre de la columna objetivo" required>
+                            </div>
+                            
+                            <div class="form-submit-centered">
+                                <button type="submit" class="btn-primary btn-lg">
+                                    <i class="fas fa-upload"></i> Cargar Dataset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contenido principal para visualización y entrenamiento -->
+                <div class="main-content">
+                    <!-- Card para entrenar y visualizar modelos -->
+                    <div class="card">
+                        <h3><i class="fas fa-cogs"></i> Entrenamiento de Modelos</h3>
+                        
+                        <!-- Configuración del modelo -->
+                        <div class="form-group">
+                            <label for="model-type"><i class="fas fa-code-branch"></i> Tipo de Modelo:</label>
+                            <select id="model-type" class="styled-select">
+                                <option value="random_forest">Random Forest</option>
+                                <option value="svm">Support Vector Machine</option>
+                                <option value="logistic_regression">Regresión Logística</option>
+                                <option value="neural_network">Red Neuronal</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Sección de parámetros de entrenamiento -->
+                        <div class="form-group">
+                            <h4><i class="fas fa-sliders-h"></i> Parámetros de Entrenamiento</h4>
+                            
+                            <div class="training-params">
+                                <div class="param-row">
+                                    <label for="test-size">División de Datos (% Test):</label>
+                                    <input type="range" id="test-size" min="10" max="50" value="20" step="5">
+                                    <span id="test-size-value">20%</span>
+                                </div>
+                                
+                                <div class="param-row">
+                                    <label for="random-state">Random State:</label>
+                                    <input type="number" id="random-state" min="0" value="42">
+                                </div>
+                                
+                                <div class="param-row">
+                                    <label for="max-iterations">Número de Iteraciones:</label>
+                                    <input type="number" id="max-iterations" min="1" value="10">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sección de iteración de entrenamiento -->
+                        <div class="form-group" id="iteration-section">
+                            <h4><i class="fas fa-sync-alt"></i> Control de Iteración</h4>
+                            
+                            <!-- Visualización de métricas actuales -->
+                            <div class="current-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-label">Iteración actual:</span>
+                                    <span class="metric-value" id="current-iteration">3</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Precisión:</span>
+                                    <span class="metric-value" id="current-accuracy">0.87</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Loss:</span>
+                                    <span class="metric-value" id="current-loss">0.34</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Pregunta de iteración -->
+                            <div class="iteration-question">
+                                <h5>¿Desea continuar con la iteración?</h5>
+                                <p>El modelo ha completado la iteración actual. Puede continuar entrenando para mejorar las métricas o detener el proceso.</p>
+                                
+                                <div class="iteration-actions">
+                                    <button id="continue-iteration" class="btn-primary">
+                                        <i class="fas fa-play"></i> Continuar Iteración
+                                    </button>
+                                    <button id="stop-iteration" class="btn-primary" style="background: linear-gradient(to right, #e74c3c, #c0392b)">
+                                        <i class="fas fa-stop"></i> Detener y Evaluar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Botones de acción -->
+                        <div class="form-submit-centered">
+                            <button id="train-model" class="btn-primary btn-lg">
+                                <i class="fas fa-play-circle"></i> Iniciar Entrenamiento
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Card para resultados de entrenamiento (inicialmente oculto) -->
+                    <div class="card" id="results-card" style="display: none;">
+                        <h3><i class="fas fa-chart-line"></i> Resultados del Entrenamiento</h3>
+                        
+                        <!-- Tabs para diferentes visualizaciones -->
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="metrics-tab">Métricas</button>
+                            <button class="tab-btn" data-tab="confusion-tab">Matriz de Confusión</button>
+                            <button class="tab-btn" data-tab="learning-tab">Curva de Aprendizaje</button>
+                            <button class="tab-btn" data-tab="predict-tab">Predicción</button>
+                        </div>
+                        
+                        <!-- Contenido de los tabs -->
+                        <div id="metrics-tab" class="tab-content active">
+                            <h4>Métricas de Rendimiento</h4>
+                            <table class="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Métrica</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="metrics-table-body">
+                                    <!-- Se llenará dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="confusion-tab" class="tab-content">
+                            <h4>Matriz de Confusión</h4>
+                            <div class="canvas-container">
+                                <canvas id="confusion-matrix"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div id="learning-tab" class="tab-content">
+                            <h4>Curva de Aprendizaje</h4>
+                            <div class="canvas-container">
+                                <canvas id="learning-curve"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div id="predict-tab" class="tab-content">
+                            <h4>Realizar Predicción</h4>
+                            <div id="feature-inputs">
+                                <!-- Se generará dinámicamente según el dataset -->
+                            </div>
+                            <div class="form-submit-centered">
+                                <button id="predict-btn" class="btn-primary">
+                                    <i class="fas fa-magic"></i> Predecir
+                                </button>
+                            </div>
+                            <div class="prediction-result" id="prediction-result" style="display: none;">
+                                <!-- Se mostrará el resultado de la predicción -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
+                <div>
+                    <h3>DataInsight AI</h3>
+                    <p>Plataforma integrada de análisis de datos y machine learning.</p>
+                    <p>&copy; 2025 - Todos los derechos reservados</p>
+                </div>
+                
+                <div>
+                    <h4>Navegación</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/analisis.html">Análisis</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/models.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# Archivos y carpetas que no se necesitan en la imagen Docker
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.git
+.gitignore
+*.log
+.ipynb_checkpoints/
+.env

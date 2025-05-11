@@ -1,0 +1,103 @@
+# Dependencias
+node_modules/
+.npm
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+
+# Entornos Python
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pytest_cache/
+.pytest_cache/
+
+# Logs
+logs/*
+!logs/.gitkeep
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Directorio de caché
+data_science_ml_learning/cache/*
+!data_science_ml_learning/cache/.gitkeep
+
+# Archivos de datos grandes
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.model
+!data_science_ml_learning/datasets/*.csv  # Permitir archivos CSV de ejemplo en datasets
+
+# Configuración de IDE 
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Archivos de configuración local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config.local.js
+config.dev.js
+
+# Archivos de certificados SSL
+ssl/*
+!ssl/.gitkeep
+
+# Archivos de compilación
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Archivos temporales
+temp/
+tmp/
+.tmp/
+
+# Archivos de modelos (potencialmente grandes)
+data_science_ml_learning/models/*
+!data_science_ml_learning/models/.gitkeep
+
+# Excepciones (archivos o carpetas específicas para conservar)
+!.gitkeep
+!data_science_ml_learning/datasets/iris_sample.csv
