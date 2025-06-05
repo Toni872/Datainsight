@@ -29,8 +29,10 @@ Este proyecto está protegido bajo la licencia [GNU Affero General Public Licens
 ## 🖥️ Capturas de Pantalla
 
 <div align="center">
+  <p><strong>Dashboard y Análisis de Datos</strong></p>
   <img src="public/img/pattern-dot.svg" alt="Dashboard" width="400"/>
-  <p>Visualización del Dashboard</p>
+  <p><strong>Sección "Aprende más" con tarjetas interactivas</strong></p>
+  <img src="public/img/bg-pattern-learn.svg" alt="Sección Aprende Más" width="400"/>
 </div>
 
 ## 🛠️ Tecnologías Utilizadas
