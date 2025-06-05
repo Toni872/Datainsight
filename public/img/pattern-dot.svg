@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .dot {
+      fill: #ffffff;
+      opacity: 0.8;
+    }
+    .dot-anim-1 {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .dot-anim-2 {
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .dot-anim-3 {
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+  </style>
+  <circle class="dot" cx="2" cy="2" r="1" />
+  <circle class="dot dot-anim-1" cx="10" cy="2" r="1" />
+  <circle class="dot" cx="18" cy="2" r="1" />
+  <circle class="dot dot-anim-2" cx="2" cy="10" r="1" />
+  <circle class="dot dot-anim-3" cx="10" cy="10" r="1" />
+  <circle class="dot dot-anim-1" cx="18" cy="10" r="1" />
+  <circle class="dot" cx="2" cy="18" r="1" />
+  <circle class="dot dot-anim-2" cx="10" cy="18" r="1" />
+  <circle class="dot" cx="18" cy="18" r="1" />
+</svg>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Completado - DataInsight AI</title>
+    
+    <!-- Metaetiquetas SEO -->
+    <meta name="description" content="Tu pago ha sido procesado correctamente. Bienvenido a DataInsight AI.">
+    <meta name="keywords" content="pago, confirmación, suscripción, análisis de datos, machine learning, DataInsight">
+    <meta name="author" content="DataInsight AI">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Metaetiquetas para redes sociales -->
+    <meta property="og:title" content="Pago Completado - DataInsight AI">
+    <meta property="og:description" content="Tu pago ha sido procesado correctamente. Bienvenido a DataInsight AI.">
+    <meta property="og:image" content="https://www.contactodatainsight.com/img/datainsight-social.jpg">
+    <meta property="og:url" content="https://www.contactodatainsight.com/pago-completado.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">    <style>
+        .success-page {
+            padding: 3rem 0;
+        }
+        
+        .success-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding-bottom: 2rem;
+        }
+        
+        .success-header {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .success-header .check-icon {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .success-header .check-icon i {
+            color: #4caf50;
+            font-size: 40px;
+        }
+        
+        .success-header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        .success-body {
+            padding: 2.5rem 2rem;
+        }
+        
+        .success-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .success-info h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .info-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .info-value {
+            font-weight: 500;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .next-steps {
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+        
+        .next-steps h3 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        
+        .step-item {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+        }
+        
+        .step-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .step-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn-dashboard {
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+        
+        .btn-dashboard:hover {
+            background-color: #3a80d2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
+        }
+        
+        .receipt-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1.5rem;
+        }
+        
+        .receipt-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .receipt-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>    <header>
+        <div class="container main-header">
+            <div class="logo">DataInsight</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                    <li><a href="/modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                    <li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="/suscripciones.html"><i class="fas fa-tag"></i> Planes</a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="/contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    <main class="success-page">
+        <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <a href="/">Inicio</a> <i class="fas fa-chevron-right"></i> 
+                <a href="/suscripciones.html">Planes</a> <i class="fas fa-chevron-right"></i> 
+                <a href="/pago.html">Proceso de Pago</a> <i class="fas fa-chevron-right"></i>
+                <span>Pago Completado</span>
+            </div>
+
+            <div class="success-container">
+                <div class="success-header">
+                    <div class="check-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h1 id="success-title">¡Pago Realizado con Éxito!</h1>
+                    <p id="success-subtitle">Tu suscripción ha sido activada correctamente</p>
+                </div>
+                    
+                    <div class="success-body">
+                        <div class="success-info">
+                            <h3>Detalles de la Transacción</h3>
+                            
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-label">ID de Transacción:</div>
+                                    <div class="info-value" id="transaction-id">TRX-12345678</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Fecha:</div>
+                                    <div class="info-value" id="transaction-date">1 de junio de 2025</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Plan:</div>
+                                    <div class="info-value" id="plan-name">Plan Profesional</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Período:</div>
+                                    <div class="info-value" id="billing-period">Mensual</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Método de pago:</div>
+                                    <div class="info-value" id="payment-method">Tarjeta de crédito (terminada en 1234)</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Importe total:</div>
+                                    <div class="info-value" id="total-amount">€79.99</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="next-steps">
+                            <h3>Próximos Pasos</h3>
+                            
+                            <div class="steps-grid">
+                                <div class="step-item">
+                                    <div class="step-icon">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <div class="step-title">Explora tu Dashboard</div>
+                                    <div class="step-description">Accede a tu nuevo dashboard con todas las funcionalidades desbloqueadas.</div>
+                                </div>
+                                
+                                <div class="step-item">
+                                    <div class="step-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <div class="step-title">Entrena tus Modelos</div>
+                                    <div class="step-description">Comienza a entrenar modelos avanzados con tus nuevas capacidades.</div>
+                                </div>
+                                
+                                <div class="step-item">
+                                    <div class="step-icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="step-title">Consulta la Documentación</div>
+                                    <div class="step-description">Aprende a sacar el máximo provecho de las funcionalidades premium.</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="/dashboard.html" class="btn-dashboard">Ir al Dashboard</a>
+                        </div>
+                          <a href="#" class="receipt-link" id="download-receipt">
+                            <i class="fas fa-file-invoice"></i> Descargar Recibo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-title">DataInsight AI</h3>
+                    <p>Transformando datos en conocimiento con nuestra plataforma integral de análisis y machine learning.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/analisis.html">Análisis de Datos</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/suscripciones.html">Planes</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Soporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación API</a></li>
+                        <li><a href="#">Estado del Servicio</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Innovación, 123, 28001 Madrid, España</li>
+                        <li><i class="fas fa-phone"></i> +34 91 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> info@datainsight.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DataInsight AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const method = urlParams.get('method') || 'card';
+            const planId = urlParams.get('plan') || 'pro';
+            const billing = urlParams.get('billing') || 'monthly';
+            
+            // Generar ID de transacción aleatorio
+            const transactionId = 'TRX-' + Math.floor(Math.random() * 9000000 + 1000000);
+            document.getElementById('transaction-id').textContent = transactionId;
+            
+            // Establecer fecha actual
+            const currentDate = new Date().toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            document.getElementById('transaction-date').textContent = currentDate;
+            
+            // Información del plan
+            updatePlanInfo(planId, billing);
+            
+            // Método de pago
+            updatePaymentMethod(method);
+            
+            // Actualizar encabezado según el tipo de plan
+            updatePageHeader(planId);
+            
+            // Evento para descargar recibo
+            document.getElementById('download-receipt').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('El recibo se descargará en PDF. Funcionalidad en desarrollo.');
+                // Aquí iría la lógica para generar y descargar el PDF
+            });
+        });
+          function updatePlanInfo(planId, billing) {
+            const plans = {
+                'free': {
+                    name: 'Plan Gratuito',
+                    price: {
+                        monthly: 0,
+                        yearly: 0
+                    }
+                },
+                'basic': {
+                    name: 'Plan Básico',
+                    price: {
+                        monthly: 29.99,
+                        yearly: 287.90
+                    }
+                },
+                'pro': {
+                    name: 'Plan Profesional',
+                    price: {
+                        monthly: 79.99,
+                        yearly: 767.90
+                    }
+                },
+                'enterprise': {
+                    name: 'Plan Empresarial',
+                    price: {
+                        monthly: 199.99,
+                        yearly: 1919.90
+                    }
+                }
+            };
+            
+            const isYearly = billing === 'yearly' || billing === 'anual';
+            const plan = plans[planId] || plans.pro;
+            
+            document.getElementById('plan-name').textContent = plan.name;
+            document.getElementById('billing-period').textContent = isYearly ? 'Anual' : 'Mensual';
+            document.getElementById('total-amount').textContent = `€${isYearly ? plan.price.yearly : plan.price.monthly}`;
+        }
+          function updatePaymentMethod(method) {
+            let methodText = '';
+            
+            switch(method) {
+                case 'card':
+                    // Generar últimos 4 dígitos aleatorios
+                    const lastDigits = Math.floor(Math.random() * 9000 + 1000);
+                    methodText = `Tarjeta de crédito (terminada en ${lastDigits})`;
+                    break;
+                case 'paypal':
+                    methodText = 'PayPal';
+                    break;
+                case 'bank':
+                    methodText = 'Transferencia bancaria';
+                    break;
+                case 'free':
+                    methodText = 'Plan gratuito (sin cargo)';
+                    break;
+                default:
+                    methodText = 'Tarjeta de crédito';
+            }
+              document.getElementById('payment-method').textContent = methodText;
+        }
+        
+        /**
+         * Actualiza el encabezado y otros elementos de la página según el tipo de plan
+         */        function updatePageHeader(planId) {
+            const titleElement = document.getElementById('success-title');
+            const subtitleElement = document.getElementById('success-subtitle');
+            const receiptLink = document.getElementById('download-receipt');
+            const successHeader = document.querySelector('.success-header');
+            
+            if (planId === 'free') {
+                // Actualizar el título de la página (el que aparece en la pestaña del navegador)
+                document.title = 'Plan Gratuito Activado - DataInsight AI';
+                
+                // Actualizar texto para el plan gratuito
+                titleElement.textContent = '¡Plan Gratuito Activado!';
+                subtitleElement.textContent = 'Tu plan gratuito ha sido activado correctamente';
+                
+                // Cambiar el color del encabezado para el plan gratuito (azul en lugar de verde)
+                successHeader.style.background = 'linear-gradient(135deg, #4a90e2 0%, #3a80d2 100%)';
+                
+                // Cambiar el color del ícono de verificación
+                const checkIcon = document.querySelector('.check-icon i');
+                if (checkIcon) {
+                    checkIcon.style.color = '#4a90e2';
+                }
+                
+                // Ocultar el enlace de descarga de recibo para el plan gratuito
+                receiptLink.style.display = 'none';
+                
+                // Cambiar el texto del ID de transacción si es plan gratuito
+                const infoLabels = document.querySelectorAll('.info-label');
+                infoLabels.forEach(label => {
+                    if (label.textContent === 'ID de Transacción:') {
+                        label.textContent = 'ID de Activación:';
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

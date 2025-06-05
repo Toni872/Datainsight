@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Suscripción - DataInsight AI</title>
+    
+    <!-- Metaetiquetas SEO -->
+    <meta name="description" content="Conoce nuestros planes de suscripción flexibles para potenciar tus análisis de datos y proyectos de machine learning con DataInsight AI.">
+    <meta name="keywords" content="planes, suscripción, análisis de datos, machine learning, DataInsight">
+    <meta name="author" content="DataInsight AI">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Metaetiquetas para redes sociales -->
+    <meta property="og:title" content="Planes de Suscripción - DataInsight AI">
+    <meta property="og:description" content="Soluciones a medida para tus necesidades de análisis de datos y machine learning.">
+    <meta property="og:image" content="https://www.contactodatainsight.com/img/datainsight-social.jpg">
+    <meta property="og:url" content="https://www.contactodatainsight.com/suscripciones.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->    <link rel="canonical" href="https://www.contactodatainsight.com/suscripciones.html">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .subscription-pricing {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .pricing-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            padding: 1.8rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-card.popular {
+            border-color: #4a90e2;
+            transform: scale(1.05);
+            z-index: 1;
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.25);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-8px);
+            box-shadow: 0 15px 35px rgba(74, 144, 226, 0.3);
+        }
+        
+        .pricing-card.current-plan {
+            border-color: #4caf50;
+            border-width: 2px;
+            background-color: rgba(76, 175, 80, 0.03);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            transform: rotate(45deg);
+            background-color: #4a90e2;
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-name {
+            font-size: 1.6rem;
+            margin: 0;
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .plan-price {
+            margin: 1.2rem 0;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #4a90e2;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+        }
+        
+        .price-currency {
+            font-size: 1.2rem;
+            margin-right: 5px;
+            font-weight: 400;
+            color: #666;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            margin-left: 5px;
+            color: #888;
+            font-weight: 400;
+        }
+        
+        .pricing-description {
+            font-size: 1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .plan-comparison {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .plan-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.8rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        
+        .feature-icon {
+            color: #4caf50;
+            margin-right: 10px;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .feature-icon.no {
+            color: #ddd;
+        }
+        
+        .feature-highlight {
+            font-weight: 600;
+            color: #333;
+            margin-right: 4px;
+        }
+        
+        .feature-not-included {
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .pricing-cta {
+            display: block;
+            padding: 12px 24px;
+            background-color: #4a90e2;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.8rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+        
+        .pricing-cta:hover {
+            background-color: #3a80d2;
+            box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .pricing-cta.current {
+            background-color: #4caf50;
+            cursor: default;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .pricing-cta.current:hover {
+            background-color: #4caf50;
+            box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+        }
+        
+        .switch-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2.5rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .period-option {
+            font-size: 1.05rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            margin: 0 15px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #4a90e2;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        .savings-highlight {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 0.9rem;
+            border-radius: 12px;
+            margin-left: 10px;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+        }
+          .annual-savings {
+            margin: 12px 0;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            position: relative;
+            border: 1px dashed #4caf50;
+        }
+        
+        .savings-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .savings-text {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 8px;
+            margin: 5px 0;
+        }
+        
+        .savings-percent {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #4caf50;
+        }
+        
+        .savings-amount {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        
+        .savings-info {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        .subscription-faq {
+            max-width: 900px;
+            margin: 4rem auto;
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .subscription-faq h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .subscription-faq h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #4a90e2;
+            border-radius: 3px;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: block;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: #4a90e2;
+        }
+        
+        .faq-question:after {
+            content: "+";
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #4a90e2;
+            transition: transform 0.3s ease;
+        }
+          .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .faq-item.active {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            border-bottom: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question {
+            color: #4a90e2;
+            transition: color 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question:after {
+            content: "−";
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 1000px; /* Valor arbitrario grande para asegurar que todo el contenido sea visible */
+            padding: 15px 15px 5px;
+            opacity: 1;
+            transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.5s ease;
+        }
+        
+        /* Estilos para la sección de detalles de suscripción */
+        .subscription-details {
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid #4a90e2;
+        }
+        
+        .subscription-details:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(74, 144, 226, 0.05);
+            border-radius: 0 0 0 150px;
+            z-index: 0;
+        }
+        
+        .subscription-info, .usage-info {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 2rem;
+        }
+        
+        .subscription-info h3, .usage-info h3 {
+            color: #333;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.8rem;
+        }
+        
+        .subscription-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .subscription-data p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        
+        .subscription-status {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .status-active {
+            background-color: #e6f7e6;
+            color: #2e7d32;
+        }
+        
+        .status-canceled {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .status-past-due {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .status-trial {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .cancel-notice {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            border-left: 3px solid #ef5350;
+        }
+        
+        .usage-meters {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .usage-meter {
+            margin-bottom: 10px;
+        }
+        
+        .usage-meter label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        .meter-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e0e0e0;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .meter-fill {
+            height: 100%;
+            background-color: #4a90e2;
+            border-radius: 6px;
+            transition: width 0.8s ease;
+        }
+        
+        .meter-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 6px;
+            text-align: right;
+            font-weight: 500;
+        }
+        
+        .subscription-actions {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .btn-cancel {
+            padding: 10px 18px;
+            background-color: transparent;
+            color: #f44336;
+            border: 1px solid #f44336;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .btn-cancel:hover {
+            background-color: #ffebee;
+            box-shadow: 0 2px 5px rgba(244, 67, 54, 0.2);
+        }
+        
+        /* Tabla de comparación de planes */
+        .plan-comparison-table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 3rem auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .plan-comparison-table th, .plan-comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .plan-comparison-table th {
+            background-color: #f5f7fa;
+            color: #333;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        .plan-comparison-table th:first-child {
+            text-align: left;
+            width: 25%;
+        }
+        
+        .plan-comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        .plan-comparison-table .plan-header {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 700;
+            padding: 1.5rem 1rem;
+        }
+        
+        .plan-comparison-table .plan-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #4a90e2;
+        }
+        
+        .plan-comparison-table .check {
+            color: #4caf50;
+            font-size: 1.2rem;
+        }
+        
+        .plan-comparison-table .cross {
+            color: #ddd;
+            font-size: 1.2rem;
+        }
+        
+        .plan-comparison-table .feature-row:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        
+        .plan-comparison-table .highlight {
+            background-color: #f0f8ff;
+        }
+        
+        .plan-comparison-table .feature-value {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .plan-comparison-table .action-row td {
+            padding: 1.5rem 1rem;
+            border-top: 2px solid #eee;
+        }
+        
+        .compare-cta {
+            padding: 0.8rem 1.5rem;
+            background-color: #4a90e2;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .compare-cta:hover {
+            background-color: #3a80d2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Notificaciones */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            border-left: 4px solid #4caf50;
+        }
+        
+        .notification.error {
+            border-left: 4px solid #f44336;
+        }
+        
+        .notification.info {
+            border-left: 4px solid #2196f3;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification-content i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .notification-content i.fa-check-circle {
+            color: #4caf50;
+        }
+        
+        .notification-content i.fa-exclamation-circle {
+            color: #f44336;
+        }
+        
+        .notification-content i.fa-info-circle {
+            color: #2196f3;
+        }
+        
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        #loading-overlay.visible {
+            opacity: 1;
+        }
+        
+        .loading-spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4a90e2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        #loading-overlay p {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-card {
+                margin-bottom: 2rem;
+            }
+            
+            .subscription-pricing {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 90%;
+            }
+            
+            .plan-comparison-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        
+        /* Estilos para la sección Hero */
+        .hero {
+            background-image: url('https://www.contactodatainsight.com/img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #f0f0f0;
+        }
+        
+        .btn-primary {
+            padding: 12px 24px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #43a047;
+            box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container main-header">
+            <div class="logo">DataInsight</div>
+            <nav>                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                    <li><a href="/modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                    <li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>                    <li><a href="/suscripciones.html" class="active"><i class="fas fa-tag"></i> Planes</a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="/contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li><a href="/perfil.html"><i class="fas fa-user"></i> Mi cuenta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <a href="/">Inicio</a> <i class="fas fa-chevron-right"></i> <span>Planes de Suscripción</span>
+            </div>            <!-- Hero Section -->
+            <section class="hero-section subscription-hero">
+                <h1 class="hero-title"><i class="fas fa-tag"></i> Planes de Suscripción</h1>
+                <p class="hero-subtitle">Elige el plan perfecto para potenciar tus proyectos de análisis de datos y machine learning</p>
+            </section>
+            
+            <!-- Información de la suscripción actual -->
+            <div id="subscription-details" class="subscription-details"></div>
+              <div class="switch-toggle">
+                <span class="period-option">Facturación Mensual</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="billingToggle" aria-label="Cambiar a facturación anual">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="period-option">Facturación Anual</span>
+                <span class="savings-highlight">¡Ahorra hasta un 20%!</span>
+            </div>
+
+            <style>
+                .switch-toggle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 2rem auto;
+                    padding: 1rem;
+                    background-color: #f8f9fa;
+                    border-radius: 10px;
+                    max-width: 600px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                }
+                
+                .period-option {
+                    font-weight: 500;
+                    margin: 0 1rem;
+                    color: #555;
+                }
+                
+                .toggle-switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 60px;
+                    height: 30px;
+                }
+                
+                .toggle-switch input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                }
+                
+                .toggle-slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #ccc;
+                    transition: .4s;
+                    border-radius: 34px;
+                }
+                
+                .toggle-slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 24px;
+                    width: 24px;
+                    left: 3px;
+                    bottom: 3px;
+                    background-color: white;
+                    transition: .4s;
+                    border-radius: 50%;
+                }
+                
+                input:checked + .toggle-slider {
+                    background-color: #4a90e2;
+                }
+                
+                input:focus + .toggle-slider {
+                    box-shadow: 0 0 1px #4a90e2;
+                }
+                
+                input:checked + .toggle-slider:before {
+                    transform: translateX(30px);
+                }
+                
+                .savings-highlight {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 0.4rem 0.8rem;
+                    border-radius: 20px;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    margin-left: 1rem;
+                    animation: pulse 2s infinite;
+                }
+                
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+                
+                .annual-savings {
+                    margin-top: 1rem;
+                    padding: 0.5rem;
+                    background-color: #f1f8ff;
+                    border-radius: 8px;
+                    text-align: center;
+                }
+                
+                .savings-badge {
+                    display: inline-block;
+                    background-color: #e1ffeb;
+                    color: #28a745;
+                    padding: 0.2rem 0.5rem;
+                    border-radius: 4px;
+                    font-weight: bold;
+                    font-size: 0.8rem;
+                    margin-bottom: 0.5rem;
+                }
+                
+                .savings-percent {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    color: #28a745;
+                    margin-right: 0.5rem;
+                }
+                
+                .savings-amount {
+                    font-weight: 600;
+                }
+                
+                .savings-info {
+                    font-size: 0.8rem;
+                    color: #666;
+                    margin-top: 0.3rem;
+                }
+            </style>
+            <div class="plan-comparison">
+                <h2>Elige el plan perfecto para ti</h2>
+                <p class="plan-subtitle">Desde investigadores individuales hasta grandes empresas, tenemos la solución ideal para tus necesidades de análisis de datos</p>
+            </div>
+
+            <div class="subscription-pricing" id="pricing-container">
+                <!-- Los planes se cargarán dinámicamente -->
+                <div class="loading">Cargando planes de suscripción...</div>
+            </div>
+            
+            <!-- Tabla de comparación de planes -->
+            <h2 class="comparison-title">Comparación detallada de planes</h2>
+            <table class="plan-comparison-table">
+                <thead>
+                    <tr>
+                        <th>Características</th>
+                        <th>
+                            <div class="plan-header">Free</div>
+                            <div class="plan-price">€0</div>
+                        </th>
+                        <th>
+                            <div class="plan-header">Básico</div>
+                            <div class="plan-price">€29.99</div>
+                        </th>
+                        <th>
+                            <div class="plan-header">Pro</div>
+                            <div class="plan-price">€79.99</div>
+                        </th>
+                        <th>
+                            <div class="plan-header">Enterprise</div>
+                            <div class="plan-price">€199.99</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="feature-row">
+                        <td>Llamadas API mensuales</td>
+                        <td><span class="feature-value">100</span></td>
+                        <td><span class="feature-value">1.500</span></td>
+                        <td><span class="feature-value">15.000</span></td>
+                        <td><span class="feature-value">100.000</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Entrenamientos de modelos</td>
+                        <td><span class="feature-value">5</span></td>
+                        <td><span class="feature-value">30</span></td>
+                        <td><span class="feature-value">150</span></td>
+                        <td><span class="feature-value">1.000</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Almacenamiento</td>
+                        <td><span class="feature-value">50 MB</span></td>
+                        <td><span class="feature-value">750 MB</span></td>
+                        <td><span class="feature-value">3 GB</span></td>
+                        <td><span class="feature-value">20 GB</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Modelos avanzados</td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Soporte técnico prioritario</td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Modelos personalizados</td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="check">✓</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Recursos dedicados</td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="cross">✕</span></td>
+                        <td><span class="check">✓</span></td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Tiempo de respuesta de soporte</td>
+                        <td>48 horas</td>
+                        <td>24 horas</td>
+                        <td>12 horas</td>
+                        <td>4 horas</td>
+                    </tr>
+                    <tr class="feature-row">
+                        <td>Usuarios permitidos</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>10</td>
+                        <td>Ilimitados</td>
+                    </tr>
+                    <tr class="action-row">
+                        <td></td>
+                        <td><a href="#" class="compare-cta" data-plan="free">Comenzar</a></td>
+                        <td><a href="#" class="compare-cta" data-plan="basic">Elegir Básico</a></td>
+                        <td><a href="#" class="compare-cta" data-plan="pro">Elegir Pro</a></td>
+                        <td><a href="#" class="compare-cta" data-plan="enterprise">Elegir Enterprise</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="subscription-faq">
+                <h2>Preguntas Frecuentes</h2>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo cambiar de plan en cualquier momento?</h3>
+                    <div class="faq-answer">
+                        <p>Sí, puedes actualizar tu plan en cualquier momento. La actualización se aplicará inmediatamente y se te cobrará la diferencia prorrateada. Si bajas de plan, el cambio se aplicará al final de tu período de facturación actual.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cómo se gestionan las cuotas mensuales?</h3>
+                    <div class="faq-answer">
+                        <p>Las cuotas de uso (llamadas API, entrenamientos de modelos) se resetean automáticamente al inicio de cada período de facturación. El almacenamiento es acumulativo y permanece mientras mantengas tu suscripción activa.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué diferencia hay entre los planes en cuanto a los modelos disponibles?</h3>
+                    <div class="faq-answer">
+                        <p>El plan Gratuito te da acceso a modelos básicos como regresión lineal, árboles de decisión simples y k-means. El plan Básico añade modelos avanzados como Random Forest, SVM y redes neuronales simples. El plan Profesional incluye adicionalmente capacidad para entrenar modelos personalizados. El plan Empresarial ofrece todos los modelos anteriores más acceso a recursos computacionales dedicados para entrenamientos más rápidos y mayor rendimiento.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué métodos de pago aceptan?</h3>
+                    <div class="faq-answer">
+                        <p>Aceptamos todas las tarjetas de crédito/débito principales (Visa, Mastercard, American Express), así como PayPal. Para clientes empresariales, también ofrecemos facturación directa con pago por transferencia bancaria.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Ofrecen una garantía de devolución de dinero?</h3>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos una garantía de devolución de dinero de 14 días. Si no estás satisfecho con nuestro servicio, puedes solicitar un reembolso completo dentro de los primeros 14 días de tu suscripción de pago.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué significa "recursos dedicados" en el plan Empresarial?</h3>
+                    <div class="faq-answer">
+                        <p>Los recursos dedicados incluyen capacidad computacional reservada exclusivamente para tu cuenta, garantizando tiempos de respuesta más rápidos y mayor rendimiento para tus modelos y análisis, especialmente en momentos de alta demanda. Esto incluye CPU, GPU y memoria dedicadas que no se comparten con otros usuarios.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo aumentar temporalmente mis límites de API o almacenamiento?</h3>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos paquetes de ampliación temporal para momentos de mayor demanda. Puedes adquirir incrementos de llamadas API, entrenamientos de modelos o almacenamiento adicional sin necesidad de cambiar permanentemente de plan. Contacta con nuestro soporte para más detalles.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué ocurre si excedo mis límites mensuales?</h3>
+                    <div class="faq-answer">
+                        <p>Si alcanzas tu límite de llamadas API o entrenamientos, se pausará temporalmente el acceso a esos servicios hasta el próximo ciclo de facturación. Recibirás notificaciones cuando estés cerca de alcanzar tus límites para que puedas planificar en consecuencia o actualizar tu plan si es necesario.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Los precios incluyen impuestos?</h3>
+                    <div class="faq-answer">
+                        <p>Los precios mostrados no incluyen IVA u otros impuestos aplicables, que se añadirán en el momento del pago según la legislación de tu país o región.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Hay descuentos para organizaciones sin ánimo de lucro o instituciones educativas?</h3>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos descuentos especiales para organizaciones sin ánimo de lucro, instituciones educativas y proyectos de investigación. Contacta con nuestro equipo de ventas para más información sobre nuestro programa de descuentos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>DataInsight</h3>
+                <p>Plataforma avanzada de análisis de datos y machine learning para empresas y profesionales.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="/about.html">Nosotros</a></li>
+                    <li><a href="/terms.html">Términos de Servicio</a></li>
+                    <li><a href="/privacy.html">Política de Privacidad</a></li>
+                    <li><a href="/contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" title="Twitter" aria-label="Visitar nuestro Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn" aria-label="Visitar nuestro LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="GitHub" aria-label="Visitar nuestro GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DataInsight. Todos los derechos reservados.</p>
+        </div>
+    </footer>    <!-- Importar el script de suscripciones -->
+    <script src="js/subscription.js"></script>
+    <script>
+        // Script para manejar la redirección a la página de pago
+        document.addEventListener('DOMContentLoaded', function() {
+            // Añadir interactividad a los botones de la tabla de comparación
+            document.querySelectorAll('.compare-cta').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const planId = this.dataset.plan;
+                    const billingPeriod = document.getElementById('billingToggle')?.checked ? 'yearly' : 'monthly';
+                    
+                    // Redirigir a la página de pago
+                    window.location.href = `/pago.html?plan=${planId}&billing=${billingPeriod}`;
+                });
+            });
+            
+            // Detectar clics en botones de tarjeta de precios
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('pricing-cta') || event.target.closest('.pricing-cta')) {
+                    event.preventDefault();
+                    const button = event.target.classList.contains('pricing-cta') ? event.target : event.target.closest('.pricing-cta');
+                    
+                    // Si es el plan actual, no hacer nada
+                    if (button.classList.contains('current')) {
+                        alert('Ya estás suscrito a este plan');
+                        return;
+                    }
+                    
+                    const planId = button.dataset.plan;
+                    const billingPeriod = document.getElementById('billingToggle')?.checked ? 'yearly' : 'monthly';
+                    
+                    // Redirigir a la página de pago
+                    window.location.href = `/pago.html?plan=${planId}&billing=${billingPeriod}`;
+                }
+            });
+            
+            // Manejar botones de prueba de planes
+            document.querySelectorAll('[data-action="try-plan"]').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const planId = this.dataset.plan;
+                    const billingPeriod = document.getElementById('billingToggle')?.checked ? 'yearly' : 'monthly';
+                    
+                    // Redirigir a la página de pago
+                    window.location.href = `/pago.html?plan=${planId}&billing=${billingPeriod}&trial=true`;
+                });            });
+        });
+    </script>
+    <!-- Script para actualización inmediata de precios anuales -->
+    <script src="js/billing-toggle.js"></script>
+</body>
+</html>

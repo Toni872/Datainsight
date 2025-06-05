@@ -1,0 +1,280 @@
+/* Estilos para diferenciar planes en la página Acerca de */
+.plan-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.plan-free {
+    background-color: #f3e5f5;
+    color: #4a148c;
+    border-left: 3px solid #9c27b0;
+}
+
+.plan-basic {
+    background-color: #e0f7fa;
+    color: #006064;
+    border-left: 3px solid #00bcd4;
+}
+
+.plan-pro {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border-left: 3px solid #4caf50;
+}
+
+.plan-enterprise {
+    background-color: #ede7f6;
+    color: #4527a0;
+    border-left: 3px solid #673ab7;
+}
+
+/* Estilos para resaltar características por plan */
+.feature-card {
+    position: relative;
+    border-top: 4px solid transparent;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card.plan-basic-feature {
+    border-top-color: #00bcd4;
+}
+
+.feature-card.plan-pro-feature {
+    border-top-color: #4caf50;
+}
+
+.feature-card.plan-enterprise-feature {
+    border-top-color: #673ab7;
+}
+
+/* Resaltado de planes en el banner */
+.plan-highlight {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary-color);
+}
+
+.plan-highlight i {
+    color: #ffc107;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Comparación de niveles de plan */
+.plan-tier-comparison {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.plan-tier {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    border-radius: 6px;
+    transition: transform 0.2s;
+}
+
+.plan-tier:hover {
+    transform: translateY(-5px);
+}
+
+.plan-tier h4 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.plan-tier p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Indicadores de planes en el banner */
+.plans-tier-indicators {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.plans-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.plans-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(0, 188, 212, 0.1), 
+        rgba(76, 175, 80, 0.1), 
+        rgba(103, 58, 183, 0.1));    z-index: 0;
+}
+
+.plans-banner-icon,
+.plans-banner-content,
+.plans-banner .btn {
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilos para feature-highlight en características principales */
+.feature-highlight {
+    font-weight: 600;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.feature-highlight::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(74, 111, 255, 0.2);
+    bottom: 0;
+    left: 0;
+}
+
+/* Estilos para la sección de uso */
+.usage-card {
+    border-left: 4px solid transparent;
+    transition: transform 0.3s ease-in-out;
+}
+
+.usage-card:hover {
+    transform: translateX(5px);
+}
+
+/* Colores para las tarjetas de uso según plan disponible */
+.usage-card:nth-child(1) {
+    border-left-color: #9c27b0; /* Free + todos los demás */
+}
+
+.usage-card:nth-child(2) {
+    border-left-color: #00bcd4; /* Básico + */
+}
+
+.usage-card:nth-child(3) {
+    border-left-color: #4caf50; /* Pro + */
+}
+
+/* Mejoras visuales para las tarjetas de plan */
+.plan-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+    z-index: 0;
+}
+
+.plan-card.basic {
+    background: linear-gradient(to bottom, #e0f7fa 0%, #ffffff 15%);
+}
+
+.plan-card.pro {
+    background: linear-gradient(to bottom, #e8f5e9 0%, #ffffff 15%);
+}
+
+.plan-card.enterprise {
+    background: linear-gradient(to bottom, #ede7f6 0%, #ffffff 15%);
+}
+
+/* Mejorar la visualización de plan-access */
+.plan-access {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.plan-access .plan-tag {
+    margin-left: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* Estilos para las tarjetas de planes */
+.plan-card {
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    flex: 1;
+    min-width: 220px;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.plan-card .plan-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.plan-card .plan-tag {
+    margin-left: 0;
+    font-size: 0.95rem;
+}
+
+.plan-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+}
+
+.plan-price span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--grey-color);
+}
+
+.plan-features {
+    margin-bottom: 1.5rem;
+}
+
+.plan-features p {
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+}
+
+.plan-features p i {
+    color: #4caf50;
+    margin-right: 8px;
+}
+
+.plans-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}

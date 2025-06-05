@@ -5,6 +5,17 @@ import IndexController from '../controllers/index';
 import { ModelsController } from '../controllers/models.controller';
 import { pythonTestController } from '../controllers/python-test.controller';
 import { healthCheckMiddleware } from '../middlewares/diagnostics.middleware';
+import { 
+    checkActiveSubscription, 
+    checkApiQuota, 
+    checkModelTrainingQuota, 
+    checkStorageQuota,
+    checkModelAccessPermission 
+} from '../middlewares/subscription.middleware';
+import subscriptionRoutes from './subscription.routes';
+import paymentRoutes from './payment.routes.simplified';
+import adminRoutes from './admin.routes';
+import authRoutes from './auth.routes';
 
 // Crear el directorio de uploads si no existe
 const uploadsDir = path.join(__dirname, '../../temp/uploads');
@@ -45,29 +56,66 @@ export const setRoutes = (app: Express): void => {
     // Ruta de diagnóstico y salud
     app.get('/health', healthCheckMiddleware);
     app.get('/api/health', healthCheckMiddleware);
+    
+    // Configuración de rutas modulares
+    app.use('/api/subscription', subscriptionRoutes);
+    app.use('/api/payment', paymentRoutes);
+    app.use('/api/admin', adminRoutes);
+    app.use('/api/auth', authRoutes);
 
     // Rutas API básicas
     app.get('/api', indexController.home.bind(indexController));
     app.get('/api/about', indexController.about.bind(indexController));
     
     // Rutas para integración con ciencia de datos (existentes)
-    app.get('/api/analyze/:datasetName', indexController.runDataAnalysis.bind(indexController));
-    app.get('/api/ml/classify/:datasetName', indexController.runMachineLearning.bind(indexController));
+    app.get('/api/analyze/:datasetName', checkActiveSubscription, checkApiQuota, indexController.runDataAnalysis.bind(indexController));
+    app.get('/api/ml/classify/:datasetName', checkActiveSubscription, checkApiQuota, indexController.runMachineLearning.bind(indexController));
     
     // Rutas para modelos ML (nuevos endpoints)
-    app.get('/api/datasets/list', modelsController.listDatasets);
-    app.get('/api/datasets/:id', modelsController.getDatasetInfo);
-    app.post('/api/datasets/upload', upload.single('file'), modelsController.uploadDataset);
-    app.post('/api/models/train', modelsController.trainModels);
-    app.post('/api/models/predict', modelsController.predict);
+    app.get('/api/datasets/list', checkActiveSubscription, modelsController.listDatasets);
+    app.get('/api/datasets/:id', checkActiveSubscription, checkApiQuota, modelsController.getDatasetInfo);
+    app.post('/api/datasets/upload', 
+        checkActiveSubscription, 
+        checkStorageQuota(10 * 1024 * 1024), // Asumimos archivos de hasta 10MB
+        upload.single('file'), 
+        modelsController.uploadDataset
+    );
+    app.post('/api/models/train', 
+        checkActiveSubscription, 
+        checkModelTrainingQuota, 
+        modelsController.trainModels
+    );
+    app.post('/api/models/predict', 
+        checkActiveSubscription, 
+        checkApiQuota, 
+        modelsController.predict
+    );
     
     // Nuevas rutas para modelos ML avanzados
-    app.get('/api/ml/status', modelsController.getMLServiceStatus);
-    app.get('/api/ml/available-models', modelsController.getAvailableModels);
-    app.post('/api/ml/train', modelsController.trainAdvancedModel);
-    app.post('/api/ml/clustering', modelsController.performClustering);
-    app.post('/api/ml/timeseries', modelsController.analyzeTimeSeries);
-    app.post('/api/ml/visualize', modelsController.generateModelVisualization);
+    app.get('/api/ml/status', checkActiveSubscription, modelsController.getMLServiceStatus);
+    app.get('/api/ml/available-models', checkActiveSubscription, modelsController.getAvailableModels);
+    app.post('/api/ml/train', 
+        checkActiveSubscription, 
+        checkModelTrainingQuota, 
+        modelsController.trainAdvancedModel
+    );
+    app.post('/api/ml/clustering', 
+        checkActiveSubscription, 
+        checkApiQuota, 
+        checkModelAccessPermission('dbscan'), // Asumiendo que utilizamos clustering DBSCAN 
+        modelsController.performClustering
+    );
+    app.post('/api/ml/timeseries', 
+        checkActiveSubscription, 
+        checkApiQuota, 
+        checkModelAccessPermission('arima'), // Asumiendo que utilizamos modelos ARIMA
+        modelsController.analyzeTimeSeries
+    );
+    app.post('/api/ml/visualize', 
+        checkActiveSubscription, 
+        checkApiQuota, 
+        modelsController.generateModelVisualization
+    );
     
     // Rutas para las vistas HTML
     app.get('/', (req, res) => {

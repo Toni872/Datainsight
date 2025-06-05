@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Pago - DataInsight AI</title>
+    
+    <!-- Metaetiquetas SEO -->
+    <meta name="description" content="Completa tu suscripción a DataInsight AI con nuestro proceso de pago seguro.">
+    <meta name="keywords" content="pago, suscripción, análisis de datos, machine learning, DataInsight, seguro">
+    <meta name="author" content="DataInsight AI">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Metaetiquetas para redes sociales -->
+    <meta property="og:title" content="Pago Seguro - DataInsight AI">
+    <meta property="og:description" content="Completa tu suscripción con nuestro proceso de pago seguro.">
+    <meta property="og:image" content="https://www.contactodatainsight.com/img/datainsight-social.jpg">
+    <meta property="og:url" content="https://www.contactodatainsight.com/pago.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .payment-page {
+            padding: 3rem 0;
+        }
+        
+        .payment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .payment-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .payment-header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .payment-summary {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .plan-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .plan-price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+        
+        .billing-cycle {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: right;
+        }
+        
+        .payment-divider {
+            height: 1px;
+            background-color: #e9ecef;
+            margin: 1rem 0;
+        }
+        
+        .payment-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .payment-form {
+            padding: 2rem;
+        }
+        
+        .payment-form h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: #333;
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: #ccc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-method.active {
+            border-color: var(--primary-color);
+            background-color: rgba(74, 144, 226, 0.05);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        
+        .payment-method.active i {
+            color: var(--primary-color);
+        }
+        
+        .payment-method-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .card-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 25px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px;
+        }
+        
+        .card-icon img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .payment-secure-note {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-secure-note i {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+        
+        .payment-secure-note p {
+            font-size: 0.9rem;
+            color: #444;
+            margin: 0;
+        }
+        
+        .btn-pay {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-pay:hover {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-pay:active {
+            transform: translateY(0);
+        }
+        
+        .payment-footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+        }
+        
+        .payment-footer p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-guarantee {
+            font-weight: 600;
+            color: #4caf50;
+        }
+        
+        #paypal-form, #bank-transfer-form {
+            display: none;
+        }
+        
+        .payment-details-section {
+            display: none;
+        }
+        
+        .payment-details-section.active {
+            display: block;
+        }
+        
+        .paypal-info {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .paypal-button {
+            background-color: #0070ba;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .paypal-button:hover {
+            background-color: #005ea6;
+        }
+        
+        .bank-details {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .bank-detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .bank-detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .bank-detail-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Loader */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .loader-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(74, 144, 226, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container main-header">
+            <div class="logo">DataInsight</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                    <li><a href="/modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                    <li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="/suscripciones.html"><i class="fas fa-tag"></i> Planes</a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="/contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="payment-page">
+        <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <a href="/">Inicio</a> <i class="fas fa-chevron-right"></i> 
+                <a href="/suscripciones.html">Planes</a> <i class="fas fa-chevron-right"></i> 
+                <span>Proceso de Pago</span>
+            </div>
+
+            <div class="payment-container">
+                <div class="payment-header">
+                    <h1>Completa tu Suscripción</h1>
+                    <p>Estás a un paso de potenciar tus proyectos de datos</p>
+                </div>
+                
+                <div class="payment-summary">
+                    <div class="plan-details">
+                        <div class="plan-name" id="summary-plan-name">Plan Profesional</div>
+                        <div class="plan-price" id="summary-plan-price">€79.99</div>
+                    </div>
+                    <div class="billing-cycle" id="summary-billing-cycle">Facturación mensual</div>
+                    
+                    <div class="payment-divider"></div>
+                    
+                    <div class="payment-total">
+                        <div>Total:</div>
+                        <div id="summary-total">€79.99</div>
+                    </div>
+                </div>
+                
+                <div class="payment-form">
+                    <h2>Método de Pago</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method active" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            <div class="payment-method-name">Tarjeta de Crédito</div>
+                        </div>
+                        <div class="payment-method" data-method="paypal">
+                            <i class="fab fa-paypal"></i>
+                            <div class="payment-method-name">PayPal</div>
+                        </div>
+                        <div class="payment-method" data-method="bank">
+                            <i class="fas fa-university"></i>
+                            <div class="payment-method-name">Transferencia Bancaria</div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-secure-note">
+                        <i class="fas fa-lock"></i>
+                        <p>Tus datos de pago están seguros. Utilizamos encriptación SSL y no almacenamos información de tarjetas de crédito.</p>
+                    </div>
+                    
+                    <!-- Formulario de Tarjeta de Crédito -->
+                    <div id="card-form" class="payment-details-section active">
+                        <div class="card-icons">
+                            <div class="card-icon"><img src="img/visa.svg" alt="Visa"></div>
+                            <div class="card-icon"><img src="img/mastercard.svg" alt="Mastercard"></div>
+                            <div class="card-icon"><img src="img/amex.svg" alt="American Express"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-name">Nombre en la tarjeta</label>
+                            <input type="text" id="card-name" class="form-control" placeholder="Nombre como aparece en la tarjeta">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-number">Número de tarjeta</label>
+                            <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Fecha de expiración</label>
+                                <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvc">Código de seguridad</label>
+                                <input type="text" id="card-cvc" class="form-control" placeholder="CVC">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario de PayPal -->
+                    <div id="paypal-form" class="payment-details-section">
+                        <div class="paypal-info">
+                            <p>Serás redirigido a PayPal para completar tu pago de forma segura.</p>
+                            <button class="paypal-button">
+                                <i class="fab fa-paypal"></i> Continuar con PayPal
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario de Transferencia Bancaria -->
+                    <div id="bank-transfer-form" class="payment-details-section">
+                        <p>Realiza una transferencia bancaria con los siguientes datos:</p>
+                        
+                        <div class="bank-details">
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Beneficiario:</div>
+                                <div>DataInsight Technologies S.L.</div>
+                            </div>
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">IBAN:</div>
+                                <div>ES91 2100 0418 4502 0005 1332</div>
+                            </div>
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">BIC/SWIFT:</div>
+                                <div>CAIXESBBXXX</div>
+                            </div>
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Banco:</div>
+                                <div>CaixaBank</div>
+                            </div>
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Concepto:</div>
+                                <div id="bank-reference">SUBS-PRO-23456</div>
+                            </div>
+                        </div>
+                        
+                        <p>Una vez realizada la transferencia, tu suscripción se activará en un plazo de 24-48 horas laborables.</p>
+                        <p>Para agilizar el proceso, puedes enviar el comprobante de transferencia a <a href="mailto:pagos@datainsight.com">pagos@datainsight.com</a>.</p>
+                    </div>
+                    
+                    <button id="btn-complete-payment" class="btn-pay">Completar Pago</button>
+                    
+                    <div class="text-center" style="margin-top: 1rem;">
+                        <a href="/suscripciones.html" class="back-link">
+                            <i class="fas fa-arrow-left"></i> Volver a los planes
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="payment-footer">
+                    <p class="payment-guarantee">Garantía de devolución de 14 días</p>
+                    <p>Si no estás satisfecho con nuestro servicio, te devolvemos tu dinero sin preguntas.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-title">DataInsight AI</h3>
+                    <p>Transformando datos en conocimiento con nuestra plataforma integral de análisis y machine learning.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/analisis.html">Análisis de Datos</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/suscripciones.html">Planes</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Soporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación API</a></li>
+                        <li><a href="#">Estado del Servicio</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Innovación, 123, 28001 Madrid, España</li>
+                        <li><i class="fas fa-phone"></i> +34 91 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> info@datainsight.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DataInsight AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loader Overlay -->
+    <div class="loader-overlay" id="loader-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script>        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const planId = urlParams.get('plan');
+            const billing = urlParams.get('billing');
+            
+            // Actualizar el resumen del plan
+            updatePlanSummary(planId, billing);
+            
+            // Si es plan gratuito, redirigir directamente a la página de éxito
+            if (planId === 'free') {
+                document.querySelector('.payment-form h2').textContent = 'Activación de Plan Gratuito';
+                document.querySelector('.payment-methods').style.display = 'none';
+                document.querySelector('.payment-secure-note').style.display = 'none';
+                document.querySelectorAll('.payment-details-section').forEach(el => el.style.display = 'none');
+                
+                // Cambiar el botón
+                const btnPay = document.getElementById('btn-complete-payment');
+                btnPay.textContent = 'Activar Plan Gratuito';
+                btnPay.addEventListener('click', function() {
+                    // Mostrar el loader
+                    document.getElementById('loader-overlay').classList.add('active');
+                    
+                    // Simular procesamiento
+                    setTimeout(() => {
+                        window.location.href = '/pago-completado.html?method=free&plan=free&billing=' + (billing || 'monthly');
+                    }, 1000);
+                });
+                
+                return;
+            }
+            
+            // Cambiar método de pago
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Eliminar clase active de todos
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    // Añadir clase active al seleccionado
+                    this.classList.add('active');
+                    
+                    // Mostrar el formulario correspondiente
+                    const methodType = this.dataset.method;
+                    document.querySelectorAll('.payment-details-section').forEach(form => {
+                        form.classList.remove('active');
+                    });
+                    document.getElementById(methodType + '-form').classList.add('active');
+                });
+            });
+            
+            // Manejar el botón de pago
+            document.getElementById('btn-complete-payment').addEventListener('click', function() {
+                processPayment();
+            });
+            
+            // Manejar el botón de PayPal
+            const paypalButton = document.querySelector('.paypal-button');
+            if (paypalButton) {
+                paypalButton.addEventListener('click', function() {
+                    redirectToPayPal();
+                });
+            }
+        });
+          /**
+         * Actualiza el resumen del plan en la página
+         */
+        function updatePlanSummary(planId, billing) {
+            let planName = 'Plan Profesional';
+            let planPrice = '79.99';
+            let isYearly = billing === 'yearly' || billing === 'anual';
+            
+            // Definir los detalles de los planes
+            const plans = {
+                'free': {
+                    name: 'Plan Gratuito',
+                    price: {
+                        monthly: 0,
+                        yearly: 0
+                    }
+                },
+                'basic': {
+                    name: 'Plan Básico',
+                    price: {
+                        monthly: 29.99,
+                        yearly: 287.90 // 20% de descuento anual
+                    }
+                },
+                'pro': {
+                    name: 'Plan Profesional',
+                    price: {
+                        monthly: 79.99,
+                        yearly: 767.90 // 20% de descuento anual
+                    }
+                },
+                'enterprise': {
+                    name: 'Plan Empresarial',
+                    price: {
+                        monthly: 199.99,
+                        yearly: 1919.90 // 20% de descuento anual
+                    }
+                }
+            };
+            
+            // Si tenemos un plan válido, actualizar los detalles
+            if (planId && plans[planId]) {
+                const plan = plans[planId];
+                planName = plan.name;
+                planPrice = isYearly ? plan.price.yearly : plan.price.monthly;
+            }
+            
+            // Actualizar el DOM
+            document.getElementById('summary-plan-name').textContent = planName;
+            document.getElementById('summary-plan-price').textContent = `€${planPrice}`;
+            document.getElementById('summary-billing-cycle').textContent = isYearly ? 'Facturación anual' : 'Facturación mensual';
+            document.getElementById('summary-total').textContent = `€${planPrice}`;
+            
+            // Actualizar referencia para transferencia bancaria
+            const reference = `SUBS-${planId.toUpperCase()}-${Math.floor(Math.random() * 90000) + 10000}`;
+            document.getElementById('bank-reference').textContent = reference;
+        }
+        
+        /**
+         * Procesa el pago según el método seleccionado
+         */
+        function processPayment() {
+            // Obtener el método de pago seleccionado
+            const selectedMethod = document.querySelector('.payment-method.active').dataset.method;
+            
+            // Mostrar el loader
+            document.getElementById('loader-overlay').classList.add('active');
+            
+            // Simular procesamiento
+            setTimeout(() => {
+                // Ocultar el loader
+                document.getElementById('loader-overlay').classList.remove('active');
+                
+                // Redirigir según el método
+                if (selectedMethod === 'card') {
+                    // Validar los datos de la tarjeta
+                    if (validateCardForm()) {
+                        // Simular procesamiento con pasarela de pago
+                        window.location.href = '/pago-completado.html?method=card';
+                    }
+                } else if (selectedMethod === 'paypal') {
+                    redirectToPayPal();
+                } else if (selectedMethod === 'bank') {
+                    // Para transferencia bancaria, redirigir a la página de instrucciones
+                    window.location.href = '/pago-pendiente.html?method=bank';
+                }
+            }, 1500);
+        }
+        
+        /**
+         * Redirige a PayPal para el pago
+         */
+        function redirectToPayPal() {
+            // En un entorno real, aquí se generaría una redirección a PayPal
+            // Con los parámetros de la transacción
+            window.location.href = '/pago-completado.html?method=paypal';
+        }
+        
+        /**
+         * Valida el formulario de tarjeta de crédito
+         */
+        function validateCardForm() {
+            const cardName = document.getElementById('card-name').value.trim();
+            const cardNumber = document.getElementById('card-number').value.trim();
+            const cardExpiry = document.getElementById('card-expiry').value.trim();
+            const cardCvc = document.getElementById('card-cvc').value.trim();
+            
+            // Validación básica
+            if (!cardName || !cardNumber || !cardExpiry || !cardCvc) {
+                alert('Por favor, completa todos los campos de la tarjeta');
+                return false;
+            }
+            
+            // Validación simple de número de tarjeta (16 dígitos)
+            if (!/^\d{16}$/.test(cardNumber.replace(/\s/g, ''))) {
+                alert('El número de tarjeta debe tener 16 dígitos');
+                return false;
+            }
+            
+            // Validación simple de fecha de expiración (MM/YY)
+            if (!/^\d{2}\/\d{2}$/.test(cardExpiry)) {
+                alert('La fecha de expiración debe tener el formato MM/AA');
+                return false;
+            }
+            
+            // Validación simple de CVC (3-4 dígitos)
+            if (!/^\d{3,4}$/.test(cardCvc)) {
+                alert('El CVC debe tener 3 o 4 dígitos');
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

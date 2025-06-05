@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acerca de - DataInsight AI</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sections.css">
+    <link rel="stylesheet" href="/css/plan-colors.css">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -13,238 +14,350 @@
 <body>
     <header>
         <div class="container main-header">
-            <div class="logo">DataInsight</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+            <div class="logo">DataInsight</div>            <nav>                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
                     <li><a href="/modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
                     <li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li><a href="/about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="/suscripciones.html"><i class="fas fa-tag"></i> Planes</a></li>
+                    <li><a href="/about.html" class="active"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="/contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li><a href="/perfil.html"><i class="fas fa-user"></i> Mi cuenta</a></li>
                 </ul>
             </nav>
         </div>
-    </header>
-
-    <main>
+    </header>    <main>
         <div class="container">
-            <div class="hero-section">
-                <h1 class="hero-title">Acerca de DataInsight AI</h1>
-                <p class="hero-subtitle">Plataforma integral de análisis de datos y machine learning con tecnología de vanguardia</p>
-            </div>
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <a href="/">Inicio</a> <i class="fas fa-chevron-right"></i> <span>Acerca de</span>            </div>            <!-- Hero Section con diseño mejorado -->
+            <section class="hero-section about-hero">
+                <h1 class="hero-title"><i class="fas fa-info-circle"></i> Acerca de DataInsight AI</h1>
+                <p class="hero-subtitle">Plataforma integral de análisis de datos y machine learning con planes adaptados a sus necesidades</p>
+            </section>
             
-            <div class="card">
-                <div class="card-header">
-                    <h3><i class="fas fa-clipboard"></i> Descripción del Proyecto</h3>
+            <!-- Descripción del Proyecto - Diseño mejorado -->
+            <section class="about-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-clipboard"></i> Descripción del Proyecto</h2>
+                    <div class="section-divider"></div>
                 </div>
-                <div class="card-body">
-                    <p>DataInsight AI es una aplicación de última generación que combina una interfaz web moderna desarrollada con TypeScript y Express.js con capacidades avanzadas de ciencia de datos implementadas en Python.</p>
+                  <div class="about-content">
+                    <p class="lead-text">DataInsight AI es una aplicación de última generación que combina una interfaz web moderna desarrollada con TypeScript y Express.js con capacidades avanzadas de ciencia de datos implementadas en Python.</p>
+                      <p>Esta plataforma sirve como un puente entre el desarrollo web y el análisis de datos, permitiendo a los usuarios ejecutar modelos de machine learning, visualizar resultados y explorar conjuntos de datos a través de una interfaz intuitiva y visualmente atractiva.</p>
                     
-                    <p>Esta plataforma sirve como un puente entre el desarrollo web y el análisis de datos, permitiendo a los usuarios ejecutar modelos de machine learning, visualizar resultados y explorar conjuntos de datos a través de una interfaz intuitiva y visualmente atractiva.</p>
-                    
-                    <div class="data-feature mt-4 mb-3">
-                        <div class="data-feature-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <div class="data-feature-content">
-                            <h4>Objetivos del Proyecto</h4>
-                        </div>
-                    </div>
-
-                    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                        <div>
-                            <h4><i class="fas fa-puzzle-piece"></i> Integración</h4>
-                            <p>Demostrar la perfecta conexión entre aplicaciones web y modelos de machine learning.</p>
-                        </div>
-                        
-                        <div>
-                            <h4><i class="fas fa-search"></i> Exploración</h4>
-                            <p>Ofrecer una plataforma robusta para explorar técnicas avanzadas de análisis de datos.</p>
-                        </div>
-                        
-                        <div>
-                            <h4><i class="fas fa-graduation-cap"></i> Educación</h4>
-                            <p>Servir como herramienta educativa para aprender los fundamentos de ciencia de datos.</p>
-                        </div>
-                        
-                        <div>
-                            <h4><i class="fas fa-flask"></i> Experimentación</h4>
-                            <p>Proporcionar ejemplos prácticos de algoritmos de machine learning en entornos reales.</p>
+                    <div class="plan-highlight">
+                        <i class="fas fa-crown"></i>
+                        <p>Nuestros <strong>planes de suscripción</strong> están diseñados para adaptarse a todo tipo de usuarios, desde individuos hasta grandes empresas, ofreciendo diferentes niveles de acceso a las funcionalidades de análisis de datos.</p>
+                        <div class="plan-tier-comparison">
+                            <div class="plan-tier plan-basic">
+                                <h4>Básico</h4>
+                                <p>Funcionalidades esenciales para análisis exploratorio y visualizaciones básicas.</p>
+                            </div>
+                            <div class="plan-tier plan-pro">
+                                <h4>Pro</h4>
+                                <p>Modelos avanzados, mayor capacidad de procesamiento y soporte prioritario.</p>
+                            </div>
+                            <div class="plan-tier plan-enterprise">
+                                <h4>Enterprise</h4>
+                                <p>Soluciones personalizadas, procesamiento a escala y API dedicada.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h3><i class="fas fa-microchip"></i> Tecnologías Utilizadas</h3>
-                </div>
-                <div class="card-body">
-                    <div class="grid">
-                        <div>
-                            <h4 class="mb-2"><i class="fas fa-laptop-code"></i> Frontend</h4>
-                            <ul>
-                                <li><i class="fab fa-html5"></i> HTML5</li>
-                                <li><i class="fab fa-css3-alt"></i> CSS3</li> 
-                                <li><i class="fab fa-js"></i> JavaScript</li>
-                                <li><i class="fas fa-chart-line"></i> Chart.js</li>
-                            </ul>
+                
+                <div class="section-title mt-4">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Objetivos del Proyecto</h3>
+                </div>                <div class="feature-grid">
+                    <div class="feature-card plan-basic-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-puzzle-piece"></i>
                         </div>
-                        
-                        <div>
-                            <h4 class="mb-2"><i class="fas fa-server"></i> Backend</h4>
-                            <ul>
-                                <li><i class="fab fa-node-js"></i> Node.js + Express.js</li>
-                                <li><i class="fab fa-js"></i> TypeScript</li>
-                                <li><i class="fas fa-plug"></i> Integración con Python</li>
-                                <li><i class="fas fa-shield-alt"></i> Middlewares de seguridad</li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h4 class="mb-2"><i class="fas fa-brain"></i> Ciencia de Datos</h4>
-                            <ul>
-                                <li><i class="fab fa-python"></i> Python</li>
-                                <li><i class="fas fa-table"></i> NumPy, Pandas</li>
-                                <li><i class="fas fa-robot"></i> scikit-learn</li>
-                                <li><i class="fas fa-chart-bar"></i> Matplotlib, Seaborn</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h3><i class="fas fa-star"></i> Características Principales</h3>
-                </div>
-                <div class="card-body">
-                    <div class="grid" style="grid-template-columns: 1fr 1fr;">
-                        <div>
-                            <h4 class="mb-2"><i class="fas fa-globe"></i> Componente Web</h4>
-                            <ul>
-                                <li><strong>API RESTful</strong> para interactuar con modelos de ML</li>
-                                <li><strong>Interfaz de usuario</strong> responsiva y moderna</li>
-                                <li><strong>Visualizaciones interactivas</strong> de resultados</li>
-                                <li><strong>Diseño modular</strong> y extensible</li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h4 class="mb-2"><i class="fas fa-database"></i> Componente de Ciencia de Datos</h4>
-                            <ul>
-                                <li><strong>Algoritmos de clasificación</strong> (Random Forest)</li>
-                                <li><strong>Análisis exploratorio</strong> de datos</li>
-                                <li><strong>Preprocesamiento</strong> avanzado</li>
-                                <li><strong>Estructura escalable</strong> para nuevos modelos</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h3><i class="fas fa-map"></i> Cómo Utilizar</h3>
-                </div>
-                <div class="card-body">
-                    <p>DataInsight AI está diseñada para facilitar su uso y exploración:</p>
-                    
-                    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                        <div class="data-feature">
-                            <div class="data-feature-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="data-feature-content">
-                                <h4>Página de Inicio</h4>
-                                <p>Proporciona una visión general del proyecto y enlaces a todas las secciones.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="data-feature">
-                            <div class="data-feature-icon">
-                                <i class="fas fa-chart-pie"></i>
-                            </div>
-                            <div class="data-feature-content">
-                                <h4>Análisis de Datos</h4>
-                                <p>Explora datasets y visualiza estadísticas descriptivas detalladas.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="data-feature">
-                            <div class="data-feature-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="data-feature-content">
-                                <h4>Modelos ML</h4>
-                                <p>Entrena y evalúa modelos de machine learning con diferentes datasets.</p>
-                            </div>
-                        </div>
+                        <h4>Integración</h4>
+                        <p>Demostrar la perfecta conexión entre aplicaciones web y modelos de machine learning.</p>
+                        <span class="plan-tag plan-basic">Disponible en: Básico</span>
+                        <span class="plan-tag plan-pro">Disponible en: Pro</span>
+                        <span class="plan-tag plan-enterprise">Disponible en: Enterprise</span>
                     </div>
                     
-                    <p class="mt-3">Para desarrolladores interesados en extender el proyecto:</p>
+                    <div class="feature-card plan-pro-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Exploración</h4>
+                        <p>Ofrecer una plataforma robusta para explorar técnicas avanzadas de análisis de datos.</p>
+                        <span class="plan-tag plan-pro">Disponible en: Pro</span>
+                        <span class="plan-tag plan-enterprise">Disponible en: Enterprise</span>
+                    </div>
+                    
+                    <div class="feature-card plan-basic-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Educación</h4>
+                        <p>Servir como herramienta educativa para aprender los fundamentos de ciencia de datos.</p>
+                        <span class="plan-tag plan-basic">Disponible en: Básico</span>
+                        <span class="plan-tag plan-pro">Disponible en: Pro</span>
+                        <span class="plan-tag plan-enterprise">Disponible en: Enterprise</span>
+                    </div>
+                    
+                    <div class="feature-card plan-pro-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h4>Experimentación</h4>
+                        <p>Proporcionar ejemplos prácticos de algoritmos de machine learning en entornos reales.</p>
+                        <span class="plan-tag plan-pro">Disponible en: Pro</span>
+                        <span class="plan-tag plan-enterprise">Disponible en: Enterprise</span>
+                    </div>
+                </div>
+            </section>
+              <!-- Tecnologías - Diseño mejorado -->
+            <section class="about-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-microchip"></i> Tecnologías Utilizadas</h2>
+                    <div class="section-divider"></div>
+                </div>
+                  <div class="plans-banner">
+                    <div class="plans-banner-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="plans-banner-content">
+                        <h3>Planes para cada necesidad tecnológica</h3>
+                        <p>Nuestros planes ofrecen diferentes niveles de acceso a estas tecnologías, adaptándose a sus necesidades específicas y escala de proyecto.</p>
+                        <div class="plans-tier-indicators">
+                            <span class="plan-tag plan-basic">Básico</span>
+                            <span class="plan-tag plan-pro">Pro</span>
+                            <span class="plan-tag plan-enterprise">Enterprise</span>
+                        </div>
+                    </div>
+                    <a href="/suscripciones.html" class="btn btn-primary">Ver planes</a>
+                </div>
+                
+                <div class="tech-container">
+                    <div class="tech-category">
+                        <div class="tech-header">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Frontend</h3>
+                        </div>
+                        <ul class="tech-list">
+                            <li><i class="fab fa-html5"></i> HTML5</li>
+                            <li><i class="fab fa-css3-alt"></i> CSS3</li> 
+                            <li><i class="fab fa-js"></i> JavaScript</li>
+                            <li><i class="fas fa-chart-line"></i> Chart.js</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-category">
+                        <div class="tech-header">
+                            <i class="fas fa-server"></i>
+                            <h3>Backend</h3>
+                        </div>
+                        <ul class="tech-list">
+                            <li><i class="fab fa-node-js"></i> Node.js + Express.js</li>
+                            <li><i class="fab fa-js"></i> TypeScript</li>
+                            <li><i class="fas fa-plug"></i> Integración con Python</li>
+                            <li><i class="fas fa-shield-alt"></i> Middlewares de seguridad</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-category">
+                        <div class="tech-header">
+                            <i class="fas fa-brain"></i>
+                            <h3>Ciencia de Datos</h3>
+                        </div>
+                        <ul class="tech-list">
+                            <li><i class="fab fa-python"></i> Python</li>
+                            <li><i class="fas fa-table"></i> NumPy, Pandas</li>
+                            <li><i class="fas fa-robot"></i> scikit-learn</li>
+                            <li><i class="fas fa-chart-bar"></i> Matplotlib, Seaborn</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Características - Diseño mejorado -->
+            <section class="about-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Características Principales</h2>
+                    <div class="section-divider"></div>
+                </div>                <div class="features-container">
+                    <div class="feature-column">
+                        <div class="feature-title">
+                            <i class="fas fa-globe"></i>
+                            <h3>Componente Web</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li><span class="feature-highlight">API RESTful</span> para interactuar con modelos de ML <span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                            <li><span class="feature-highlight">Interfaz de usuario</span> responsiva y moderna <span class="plan-tag plan-free">Free</span><span class="plan-tag plan-basic">Básico</span><span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                            <li><span class="feature-highlight">Visualizaciones interactivas</span> de resultados <span class="plan-tag plan-free">Free</span><span class="plan-tag plan-basic">Básico</span><span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                            <li><span class="feature-highlight">Diseño modular</span> y extensible <span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-column">
+                        <div class="feature-title">
+                            <i class="fas fa-database"></i>
+                            <h3>Componente de Ciencia de Datos</h3>
+                        </div>
+                        <ul class="feature-list">
+                            <li><span class="feature-highlight">Algoritmos de clasificación</span> (Random Forest) <span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                            <li><span class="feature-highlight">Análisis exploratorio</span> de datos <span class="plan-tag plan-free">Free</span><span class="plan-tag plan-basic">Básico</span><span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                            <li><span class="feature-highlight">Preprocesamiento</span> avanzado <span class="plan-tag plan-pro">Pro</span><span class="plan-tag plan-enterprise">Enterprise</span></li>
+                            <li><span class="feature-highlight">Estructura escalable</span> para nuevos modelos <span class="plan-tag plan-enterprise">Enterprise</span></li>                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Cómo Utilizar - Diseño mejorado -->
+            <section class="about-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-map"></i> Cómo Utilizar</h2>
+                    <div class="section-divider"></div>
+                </div>
+                  <p class="section-intro">DataInsight AI está diseñada para facilitar su uso y exploración a través de nuestros diferentes planes de suscripción:</p>
+                  <div class="usage-grid">
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="usage-content">
+                            <h3>Página de Inicio</h3>
+                            <p>Proporciona una visión general del proyecto y enlaces a todas las secciones.</p>
+                            <div class="plan-access">Acceso con: 
+                                <span class="plan-tag plan-free">Free</span>
+                                <span class="plan-tag plan-basic">Básico</span>
+                                <span class="plan-tag plan-pro">Pro</span>
+                                <span class="plan-tag plan-enterprise">Enterprise</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="usage-content">
+                            <h3>Análisis de Datos</h3>
+                            <p>Explora datasets y visualiza estadísticas descriptivas detalladas.</p>
+                            <div class="plan-access">Acceso con: 
+                                <span class="plan-tag plan-basic">Básico</span>
+                                <span class="plan-tag plan-pro">Pro</span>
+                                <span class="plan-tag plan-enterprise">Enterprise</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="usage-content">
+                            <h3>Modelos ML</h3>
+                            <p>Entrena y evalúa modelos de machine learning con diferentes datasets.</p>
+                            <div class="plan-access">Acceso con: 
+                                <span class="plan-tag plan-pro">Pro</span>
+                                <span class="plan-tag plan-enterprise">Enterprise</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="developer-info">
+                    <h3><i class="fas fa-code"></i> Para Desarrolladores</h3>
                     <ul>
                         <li>El código fuente está organizado siguiendo las mejores prácticas de desarrollo.</li>
                         <li>La arquitectura modular facilita la adición de nuevas características y modelos.</li>
                         <li>La documentación completa está disponible en el repositorio del proyecto.</li>
+                        <li>Planes especiales para desarrolladores disponibles con API extendida y soporte prioritario.</li>
                     </ul>
                 </div>
-            </div>
-            
-            <div class="card mt-4">
-                <div class="card-header">
-                    <h3><i class="fas fa-envelope"></i> Contacto</h3>
+                  <div class="plans-cta">
+                    <h3><i class="fas fa-tag"></i> Planes de Suscripción</h3>                    <div class="plans-grid">
+                        <div class="plan-card basic">
+                            <div class="plan-header">
+                                <span class="plan-tag plan-basic">Básico</span>
+                            </div>
+                            <div class="plan-price">19,99€<span>/mes</span></div>
+                            <div class="plan-features">
+                                <p><i class="fas fa-check"></i> Visualización básica</p>
+                                <p><i class="fas fa-check"></i> 5 datasets</p>
+                                <p><i class="fas fa-check"></i> Soporte por email</p>
+                            </div>
+                            <a href="/suscripciones.html#basico" class="btn btn-outline">Ver detalles</a>
+                        </div>
+                          <div class="plan-card pro">
+                            <div class="plan-header">
+                                <span class="plan-tag plan-pro">Pro</span>
+                            </div>
+                            <div class="plan-price">49,99€<span>/mes</span></div>
+                            <div class="plan-features">
+                                <p><i class="fas fa-check"></i> Análisis avanzado</p>
+                                <p><i class="fas fa-check"></i> 20 datasets</p>
+                                <p><i class="fas fa-check"></i> Soporte prioritario</p>
+                            </div>
+                            <a href="/suscripciones.html#pro" class="btn btn-outline">Ver detalles</a>
+                        </div>
+                          <div class="plan-card enterprise">
+                            <div class="plan-header">
+                                <span class="plan-tag plan-enterprise">Enterprise</span>
+                            </div>
+                            <div class="plan-price">129,99€<span>/mes</span></div>
+                            <div class="plan-features">
+                                <p><i class="fas fa-check"></i> Acceso total</p>
+                                <p><i class="fas fa-check"></i> Datasets ilimitados</p>
+                                <p><i class="fas fa-check"></i> Soporte 24/7</p>
+                            </div>
+                            <a href="/suscripciones.html#enterprise" class="btn btn-outline">Ver detalles</a>
+                        </div>
+                    </div>                </div>
+                
+                <div class="github-cta">
+                    <a href="https://github.com/datainsight/web-ml-platform" target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fab fa-github"></i> Ver en GitHub
+                    </a>
+                    <p class="update-info">Última actualización: 6 de mayo de 2025</p>
                 </div>
-                <div class="card-body">
-                    <p>Este proyecto fue desarrollado como una demostración de la integración perfecta entre tecnologías web modernas y ciencia de datos avanzada.</p>
-                    
-                    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                        <div>
-                            <h4><i class="fas fa-envelope"></i> Email</h4>
-                            <p><a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
-                        </div>
-                        
-                        <div>
-                            <h4><i class="fas fa-globe"></i> Sitio Web</h4>
-                            <p><a href="mailto:datainsightmaail@hotmail.com" target="_blank">datainsightmaail@hotmail.com</a></p>
-                        </div>
-                        
-                        <div>
-                            <h4><i class="fab fa-github"></i> Repositorio</h4>
-                            <p><a href="https://github.com/datainsight/web-ml-platform" target="_blank">GitHub</a></p>
-                        </div>
-                    </div>
-                    
-                    <p class="mt-4 text-center">Última actualización: 6 de mayo de 2025</p>
-                </div>
-            </div>
+            </section>
         </div>
-    </main>
-
-    <footer>
+    </main><footer>
         <div class="container">
-            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
-                <div>                    <h3>DataInsight AI</h3>
+            <div class="grid footer-grid">
+                <div>
+                    <h3>DataInsight AI</h3>
                     <p>Plataforma integrada de análisis de datos y machine learning.</p>
-                    <p>&copy; 2025 - Todos los derechos reservados</p>
+                    <p>Soluciones avanzadas de análisis para transformar sus datos en información valiosa.</p>
                 </div>
                 
-                <div>
-                    <h4>Navegación</h4>
-                    <ul style="list-style: none;">
+                <div>                    <h4>Navegación</h4>
+                    <ul class="footer-nav">
                         <li><a href="/">Inicio</a></li>
                         <li><a href="/analisis.html">Análisis</a></li>
                         <li><a href="/modelos.html">Modelos ML</a></li>
                         <li><a href="/dashboard.html">Dashboard</a></li>
                         <li><a href="/about.html">Acerca de</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>
+                        <li><a href="/perfil.html">Mi cuenta</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4>Contacto</h4>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
-                    <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
+                        <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Madrid, España</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 DataInsight AI - Todos los derechos reservados</p>
             </div>
         </div>
     </footer>

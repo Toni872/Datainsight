@@ -1,5 +1,32 @@
 import { Request, Response, NextFunction } from 'express';
 
+// Importar middlewares
+import { 
+    checkActiveSubscription, 
+    checkApiQuota, 
+    checkModelTrainingQuota, 
+    checkStorageQuota,
+    checkModelAccessPermission,
+    getQuotaInfo,
+    resetMonthlyQuotas
+} from './subscription.middleware';
+import { checkAdminRole } from './admin.middleware';
+
+// Exportar middlewares
+export {
+    // Middlewares de suscripción
+    checkActiveSubscription,
+    checkApiQuota,
+    checkModelTrainingQuota,
+    checkStorageQuota,
+    checkModelAccessPermission,
+    getQuotaInfo,
+    resetMonthlyQuotas,
+    
+    // Middleware de administración
+    checkAdminRole
+};
+
 export const authenticate = (req: Request, res: Response, next: NextFunction): void | Response => {
     // Middleware for authentication
     const token = req.headers['authorization'];
@@ -18,6 +45,19 @@ export const validateRequest = (req: Request, res: Response, next: NextFunction)
     }
     // Additional validation logic can go here
     next();
+};
+
+// Importar y reexportar los middlewares de autenticación
+import { 
+    authenticateJWT, 
+    authenticateApiKey, 
+    authorizeRoles 
+} from './auth.middleware';
+
+export {
+    authenticateJWT,
+    authenticateApiKey,
+    authorizeRoles
 };
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction): void => {

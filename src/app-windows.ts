@@ -1,5 +1,7 @@
-# Modificación especial para app.ts para solucionar problemas en Windows
-# Este archivo debe ser aplicado temporalmente para el desarrollo HTTPS
+/**
+ * Modificación especial para app.ts para solucionar problemas en Windows
+ * Este archivo debe ser aplicado temporalmente para el desarrollo HTTPS
+ */
 
 import express from 'express';
 import path from 'path';
@@ -93,10 +95,9 @@ function startHttpsServer() {
         key: fs.readFileSync(privateKeyPath),
         cert: fs.readFileSync(certificatePath)
       };
-      
-      // Crear servidor HTTPS
+        // Crear servidor HTTPS
       const httpsServer = https.createServer(httpsOptions, app);
-      httpsServer.on('error', (e) => {
+      httpsServer.on('error', (e: NodeJS.ErrnoException) => {
         console.error('Error al iniciar servidor HTTPS:', e.message);
         if (e.code === 'EACCES') {
           console.log('\nERROR DE PERMISOS: No se puede usar el puerto HTTPS.');

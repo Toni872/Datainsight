@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - DataInsight AI</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
@@ -12,14 +12,15 @@
     <header>
         <div class="container">
             <div class="main-header">
-                <div class="logo">DataInsight</div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <div class="logo">DataInsight</div>                <nav>
+                    <ul class="nav-links">                        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
                         <li><a href="analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
                         <li><a href="modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
                         <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="suscripciones.html"><i class="fas fa-tag"></i> Planes</a></li>
                         <li><a href="about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                        <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                        <li><a href="perfil.html"><i class="fas fa-user"></i> Mi cuenta</a></li>
                     </ul>
                 </nav>
             </div>
@@ -28,11 +29,18 @@
 
     <main>
         <div class="container">
-            <h1 class="section-title">Panel de Control</h1>
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <a href="/">Inicio</a> <i class="fas fa-chevron-right"></i> <span>Dashboard</span>
+            </div>            <div class="hero-section">
+                <h1 class="hero-title"><i class="fas fa-tachometer-alt"></i> Panel de Control</h1>
+                <p class="hero-subtitle">Monitorea el rendimiento de tus modelos y visualiza métricas clave de tu proyecto en tiempo real</p>
+            </div>
             
             <!-- Selector de Modelo -->
             <div class="filter-controls mb-4">
-                <select id="model-selector" class="select-control">
+                <label for="model-selector" class="sr-only">Seleccionar modelo</label>
+                <select id="model-selector" class="select-control" aria-label="Seleccionar modelo">
                     <option value="random_forest" selected>Random Forest</option>
                     <option value="svm">SVM</option>
                     <option value="logistic_regression">Regresión Logística</option>
@@ -93,9 +101,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Distribución de Clases</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container" style="height: 300px;">
+                    </div>                    <div class="card-body">
+                        <div class="chart-container">
                             <canvas id="classDistributionChart"></canvas>
                         </div>
                     </div>
@@ -105,9 +112,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Importancia de Características</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container" style="height: 300px;">
+                    </div>                    <div class="card-body">
+                        <div class="chart-container">
                             <canvas id="featureImportanceChart"></canvas>
                         </div>
                     </div>
@@ -120,9 +126,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Correlación de Características</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container" style="height: 300px;">
+                    </div>                    <div class="card-body">
+                        <div class="chart-container">
                             <canvas id="correlationHeatmap"></canvas>
                         </div>
                     </div>
@@ -132,9 +137,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Evolución de Precisión</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container" style="height: 300px;">
+                    </div>                    <div class="card-body">
+                        <div class="chart-container">
                             <canvas id="predictionTimeline"></canvas>
                         </div>
                     </div>
@@ -230,32 +234,45 @@
                 </button>
             </div>
         </div>
-    </main>
-
-    <footer>
+    </main>    <footer>
         <div class="container">
-            <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
-                <div>                    <h3>DataInsight AI</h3>
+            <div class="grid footer-grid">
+                <div>
+                    <h3>DataInsight AI</h3>
                     <p>Plataforma integrada de análisis de datos y machine learning.</p>
-                    <p>&copy; 2025 - Todos los derechos reservados</p>
+                    <p>Soluciones avanzadas de análisis para transformar sus datos en información valiosa.</p>
                 </div>
                 
-                <div>
-                    <h4>Navegación</h4>
-                    <ul style="list-style: none;">
+                <div>                    <h4>Navegación</h4>
+                    <ul class="footer-nav">
                         <li><a href="/">Inicio</a></li>
                         <li><a href="/analisis.html">Análisis</a></li>
                         <li><a href="/modelos.html">Modelos ML</a></li>
                         <li><a href="/dashboard.html">Dashboard</a></li>
                         <li><a href="/about.html">Acerca de</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>
+                        <li><a href="/perfil.html">Mi cuenta</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4>Contacto</h4>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
-                    <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:datainsightmaail@hotmail.com">datainsightmaail@hotmail.com</a></p>
+                        <p><i class="fas fa-phone"></i> +34 687 723 287</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Madrid, España</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 DataInsight AI - Todos los derechos reservados</p>
             </div>
         </div>
     </footer>

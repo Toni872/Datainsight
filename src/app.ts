@@ -19,7 +19,7 @@ dotenv.config();
 const app = express();
 
 // Configuración de variables de entorno
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const HTTPS_PORT = process.env.HTTPS_PORT || 59999;
 const isDev = process.env.NODE_ENV !== 'production';
 const DOMAIN = isDev ? 'localhost' : 'www.datainsight.com';

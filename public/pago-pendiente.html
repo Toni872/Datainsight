@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Pendiente - DataInsight AI</title>
+    
+    <!-- Metaetiquetas SEO -->
+    <meta name="description" content="Instrucciones para completar tu pago por transferencia bancaria en DataInsight AI.">
+    <meta name="keywords" content="pago, transferencia bancaria, suscripción, análisis de datos, machine learning, DataInsight">
+    <meta name="author" content="DataInsight AI">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Metaetiquetas para redes sociales -->
+    <meta property="og:title" content="Pago Pendiente - DataInsight AI">
+    <meta property="og:description" content="Instrucciones para completar tu pago por transferencia bancaria.">
+    <meta property="og:image" content="https://www.contactodatainsight.com/img/datainsight-social.jpg">
+    <meta property="og:url" content="https://www.contactodatainsight.com/pago-pendiente.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">    <style>
+        .pending-page {
+            padding: 3rem 0;
+        }
+        
+        .pending-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding-bottom: 2rem;
+        }
+        
+        .pending-header {
+            background: linear-gradient(135deg, #ff9800 0%, #ed8c00 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pending-header .info-icon {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pending-header .info-icon i {
+            color: #ff9800;
+            font-size: 40px;
+        }
+        
+        .pending-header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        .pending-body {
+            padding: 2.5rem 2rem;
+        }
+        
+        .pending-info {
+            margin-bottom: 2rem;
+        }
+        
+        .pending-info p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .bank-details {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .bank-details h3 {
+            color: #333;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        
+        .bank-detail-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .bank-detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .bank-detail-label {
+            width: 150px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .bank-detail-value {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .copy-btn {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #555;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .next-steps {
+            margin-top: 2.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .next-steps h3 {
+            margin-bottom: 1.2rem;
+            color: #333;
+        }
+        
+        .steps-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: steps-counter;
+        }
+        
+        .step-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 1.2rem;
+            counter-increment: steps-counter;
+        }
+        
+        .step-item:before {
+            content: counter(steps-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background-color: #ff9800;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .highlight-text {
+            font-weight: 600;
+            color: #ff9800;
+        }
+        
+        .action-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn-dashboard {
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+        
+        .btn-dashboard:hover {
+            background-color: #3a80d2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
+        }
+        
+        .btn-contact {
+            padding: 0.8rem 2rem;
+            background-color: white;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn-contact:hover {
+            border-color: #ccc;
+            background-color: #f8f9fa;
+        }
+        
+        .status-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 6px;
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            display: flex;
+            align-items: center;
+            border-left: 3px solid #2196f3;
+        }
+        
+        .status-info i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .bank-detail-item {
+                flex-direction: column;
+            }
+            
+            .bank-detail-label {
+                width: 100%;
+                margin-bottom: 0.3rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-dashboard, .btn-contact {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>    <header>
+        <div class="container main-header">
+            <div class="logo">DataInsight</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="/analisis.html"><i class="fas fa-chart-bar"></i> Análisis de Datos</a></li>
+                    <li><a href="/modelos.html"><i class="fas fa-brain"></i> Modelos ML</a></li>
+                    <li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="/suscripciones.html"><i class="fas fa-tag"></i> Planes</a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+                    <li><a href="/contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    <main class="pending-page">
+        <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb">
+                <a href="/">Inicio</a> <i class="fas fa-chevron-right"></i> 
+                <a href="/suscripciones.html">Planes</a> <i class="fas fa-chevron-right"></i> 
+                <a href="/pago.html">Proceso de Pago</a> <i class="fas fa-chevron-right"></i>
+                <span>Pago Pendiente</span>
+            </div>
+
+            <div class="pending-container">
+                <div class="pending-header">
+                    <div class="info-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h1>Transferencia Bancaria Pendiente</h1>
+                    <p>Sigue las instrucciones para completar tu pago</p>
+                </div>
+                    
+                    <div class="pending-body">
+                        <div class="pending-info">
+                            <p>Hemos recibido tu solicitud de suscripción al <strong id="plan-name">Plan Profesional</strong> con facturación <strong id="billing-period">mensual</strong> por un importe total de <strong id="total-amount">€79.99</strong>.</p>
+                            
+                            <p>Para completar el proceso, realiza una transferencia bancaria con los siguientes datos:</p>
+                        </div>
+                        
+                        <div class="bank-details">
+                            <h3>Datos Bancarios</h3>
+                            
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Beneficiario:</div>
+                                <div class="bank-detail-value">
+                                    DataInsight Technologies S.L.
+                                    <button class="copy-btn" data-text="DataInsight Technologies S.L.">
+                                        <i class="far fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">IBAN:</div>
+                                <div class="bank-detail-value">
+                                    ES91 2100 0418 4502 0005 1332
+                                    <button class="copy-btn" data-text="ES91 2100 0418 4502 0005 1332">
+                                        <i class="far fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">BIC/SWIFT:</div>
+                                <div class="bank-detail-value">
+                                    CAIXESBBXXX
+                                    <button class="copy-btn" data-text="CAIXESBBXXX">
+                                        <i class="far fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Banco:</div>
+                                <div class="bank-detail-value">
+                                    CaixaBank
+                                    <button class="copy-btn" data-text="CaixaBank">
+                                        <i class="far fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Importe:</div>
+                                <div class="bank-detail-value" id="bank-amount">
+                                    €79.99
+                                    <button class="copy-btn" data-text="79.99">
+                                        <i class="far fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bank-detail-item">
+                                <div class="bank-detail-label">Concepto:</div>
+                                <div class="bank-detail-value">
+                                    <span id="bank-reference">SUBS-PRO-23456</span>
+                                    <button class="copy-btn" data-text="SUBS-PRO-23456">
+                                        <i class="far fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="next-steps">
+                            <h3>Próximos pasos</h3>
+                            
+                            <ol class="steps-list">
+                                <li class="step-item">
+                                    <div class="step-content">
+                                        Realiza la transferencia bancaria con los datos proporcionados.
+                                    </div>
+                                </li>
+                                <li class="step-item">
+                                    <div class="step-content">
+                                        <strong>Importante:</strong> Incluye el concepto <span class="highlight-text" id="reference-highlight">SUBS-PRO-23456</span> para que podamos identificar tu pago.
+                                    </div>
+                                </li>
+                                <li class="step-item">
+                                    <div class="step-content">
+                                        (Opcional) Envía el comprobante de la transferencia a <a href="mailto:pagos@datainsight.com">pagos@datainsight.com</a> para agilizar el proceso.
+                                    </div>
+                                </li>
+                                <li class="step-item">
+                                    <div class="step-content">
+                                        Tu suscripción será activada en un plazo de 24-48 horas laborables tras recibir el pago.
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <div class="status-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                Hemos reservado tu suscripción. Recibirás un correo electrónico cuando confirmemos tu pago y activemos tu cuenta.
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="/dashboard.html" class="btn-dashboard">Ir al Dashboard</a>
+                            <a href="/contacto.html" class="btn-contact">Contactar con Soporte</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-title">DataInsight AI</h3>
+                    <p>Transformando datos en conocimiento con nuestra plataforma integral de análisis y machine learning.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/analisis.html">Análisis de Datos</a></li>
+                        <li><a href="/modelos.html">Modelos ML</a></li>
+                        <li><a href="/dashboard.html">Dashboard</a></li>
+                        <li><a href="/suscripciones.html">Planes</a></li>
+                        <li><a href="/about.html">Acerca de</a></li>
+                        <li><a href="/contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Soporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación API</a></li>
+                        <li><a href="#">Estado del Servicio</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Innovación, 123, 28001 Madrid, España</li>
+                        <li><i class="fas fa-phone"></i> +34 91 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> info@datainsight.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DataInsight AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const planId = urlParams.get('plan') || 'pro';
+            const billing = urlParams.get('billing') || 'monthly';
+            
+            // Generar referencia aleatoria
+            const reference = `SUBS-${planId.toUpperCase()}-${Math.floor(Math.random() * 90000) + 10000}`;
+            document.getElementById('bank-reference').textContent = reference;
+            document.getElementById('reference-highlight').textContent = reference;
+            
+            // Actualizar los botones de copia
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const textToCopy = this.dataset.text;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Cambiar texto del botón temporalmente
+                        const originalHTML = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Copiado';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Error al copiar al portapapeles: ', err);
+                    });
+                });
+                
+                // Actualizar el texto a copiar para la referencia
+                if (button.parentElement.id === 'bank-reference') {
+                    button.dataset.text = reference;
+                }
+            });
+            
+            // Información del plan
+            updatePlanInfo(planId, billing);
+        });
+        
+        function updatePlanInfo(planId, billing) {
+            const plans = {
+                'basic': {
+                    name: 'Plan Básico',
+                    price: {
+                        monthly: 29.99,
+                        yearly: 287.90
+                    }
+                },
+                'pro': {
+                    name: 'Plan Profesional',
+                    price: {
+                        monthly: 79.99,
+                        yearly: 767.90
+                    }
+                },
+                'enterprise': {
+                    name: 'Plan Empresarial',
+                    price: {
+                        monthly: 199.99,
+                        yearly: 1919.90
+                    }
+                }
+            };
+            
+            const isYearly = billing === 'yearly' || billing === 'anual';
+            const plan = plans[planId] || plans.pro;
+            const price = isYearly ? plan.price.yearly : plan.price.monthly;
+            
+            document.getElementById('plan-name').textContent = plan.name;
+            document.getElementById('billing-period').textContent = isYearly ? 'anual' : 'mensual';
+            document.getElementById('total-amount').textContent = `€${price}`;
+            document.getElementById('bank-amount').textContent = `€${price}`;
+            
+            // Actualizar el valor a copiar para el importe
+            const amountCopyBtn = document.querySelector('#bank-amount .copy-btn');
+            if (amountCopyBtn) {
+                amountCopyBtn.dataset.text = price.toString();
+            }
+        }
+    </script>
+</body>
+</html>

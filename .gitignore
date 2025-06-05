@@ -7,6 +7,7 @@ npm-debug.log*
 
 # Entornos Python
 .env
+.env.*
 .venv
 env/
 venv/
@@ -97,6 +98,12 @@ tmp/
 # Archivos de modelos (potencialmente grandes)
 data_science_ml_learning/models/*
 !data_science_ml_learning/models/.gitkeep
+
+# Instaladores
+AzureCLI.msi
+*.msi
+*.exe
+*.bin
 
 # Excepciones (archivos o carpetas específicas para conservar)
 !.gitkeep
